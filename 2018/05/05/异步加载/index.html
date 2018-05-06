@@ -16,7 +16,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T11:44:14.114Z">
+<meta property="og:updated_time" content="2018-05-06T11:57:36.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步加载, DOM">
 <meta name="twitter:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #5343709a"></div>
+<div class="overlay" style="background: linear-gradient(200deg,#a0cfe4,#e8c37e)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -60,9 +60,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/allPages">所有文章</a></li>
+				<li><a href="/tags">所有文章</a></li>
 	        
-				<li><a href="/tags">记录</a></li>
+				<li><a href="/">记录</a></li>
 	        
 			</ul>
 		</nav>
@@ -101,7 +101,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #5343709a"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#a0cfe4,#e8c37e)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -144,9 +144,9 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/allPages">所有文章</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags">所有文章</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags">记录</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">记录</a></li>
 		        
 				</ul>
 			</nav>
@@ -322,6 +322,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript异步加载"><span class="toc-number">1.</span> <span class="toc-text">JavaScript异步加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript加载时间线"><span class="toc-number">2.</span> <span class="toc-text">JavaScript加载时间线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM"><span class="toc-number">3.</span> <span class="toc-text"> DOM</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
