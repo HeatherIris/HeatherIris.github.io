@@ -185,100 +185,10 @@
 <ol>
 <li>method :数据传输&nbsp;&nbsp;&nbsp;&nbsp;get/post  </li>
 <li>action：地址</li>
-<li><p>enctype：是否对数据进行编码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;默认值”application/x-www-form-urlencoded”编码所有字符<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;”multipart/form-data”不对字符进行编码     </p>
-<h2 id="method"><a href="#method" class="headerlink" title="method"></a>method</h2></li>
-</ol>
-<hr>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align:center">GET</th>
-<th style="text-align:right">post </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>资源类型</td>
-<td style="text-align:center">主动/被动</td>
-<td style="text-align:right">主动</td>
-</tr>
-<tr>
-<td>数据类型</td>
-<td style="text-align:center">文本</td>
-<td style="text-align:right">文本/二进制 </td>
-</tr>
-<tr>
-<td>数据量</td>
-<td style="text-align:center">=&lt;255</td>
-<td style="text-align:right">没有限制     </td>
-</tr>
-<tr>
-<td>可见性</td>
-<td style="text-align:center">用户可见</td>
-<td style="text-align:right">用户不可见</td>
-</tr>
-<tr>
-<td>缓存</td>
-<td style="text-align:center">可在URL历史中缓存</td>
-<td style="text-align:right">不可缓存       </td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align:center">url(address)</th>
-<th style="text-align:right">uri </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>名称</td>
-<td style="text-align:center">统一资源标识符</td>
-<td style="text-align:right">统一资源定位符</td>
-</tr>
-<tr>
-<td>作用</td>
-<td style="text-align:center">标识资源的地点</td>
-<td style="text-align:right">标识某一互联网资源名称的字符串 </td>
-</tr>
-<tr>
-<td>格式</td>
-<td style="text-align:center">协议名：//主机名.域名.端口号</td>
-<td style="text-align:right"></td>
-</tr>
-</tbody>
-</table>
-<p><strong>URL是URI的子集</strong><br><strong><a href="http://www.sina.com.cn" target="_blank" rel="noopener">www.sina.com.cn</a></strong>.cn是顶级域名，.com.cn是二级，.sina.com.cn三级   </p>
-<h3 id="Ajax优点"><a href="#Ajax优点" class="headerlink" title="Ajax优点"></a>Ajax优点</h3><ol start="4">
-<li>页面无刷新</li>
-<li>使用异步的形式与服务器进行通信</li>
-<li>减轻服务器负担</li>
-<li>不需要插件或小程序     </li>
-</ol>
-<h3 id="Ajax缺点"><a href="#Ajax缺点" class="headerlink" title="Ajax缺点"></a>Ajax缺点</h3><ol>
-<li>不支持浏览器后退机制</li>
-<li>安全问题，会导致跨站点脚本攻击</li>
-<li>不支持移动设备</li>
-<li>对搜索引擎支持较弱</li>
-<li>违背URL和资源定位初衷       </li>
-</ol>
-<p>###Ajax的两个对象    </p>
-<p><code>new XMLHttpRequest</code><br><code>new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;)</code>    </p>
-<h2 id="封装Ajax"><a href="#封装Ajax" class="headerlink" title="封装Ajax"></a>封装Ajax</h2><ol>
-<li>创建对象</li>
-<li>创建与服务器之间的连接和调用</li>
-<li><p>实时监听对象状态改变      </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Ajax</span>(<span class="params">methed, url, flag, callback, data</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//创建对象</span></span><br><span class="line">      <span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">       <span class="comment">//浏览器兼容</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRepuest) &#123;      </span><br><span class="line">          xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">          xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//创建对服务器的连接和调用</span></span><br><span class="line">      <span class="keyword">if</span> (method == <span class="string">'get'</span>) &#123;              <span class="comment">//url += '?' + data + new Date().getTime();</span></span><br><span class="line">          xhr.open(<span class="string">'get'</span>, url, flag);     <span class="comment">//建立对服务器的调用</span></span><br><span class="line">          xhr.send();                     <span class="comment">//向服务器发送请求</span></span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span> (methed == <span class="string">'post'</span>) &#123;       <span class="comment">//方式post传数据</span></span><br><span class="line">          <span class="comment">//在设置任何首部之前必须先调用open();</span></span><br><span class="line">          xhr.open(<span class="string">'post'</span>, url, flag); </span><br><span class="line">          <span class="comment">//把首部设置为所提供的值，设置发送数据的格式才能发送数据。</span></span><br><span class="line">          xhr.setRequsetHeader(<span class="string">'content-type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">          xhr.send(data);                 <span class="comment">//post方式只能用send方法来发送数据 </span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//实施监听对象状态改变,onreadystatechange是状态改变事件触发器</span></span><br><span class="line">      <span class="comment">//readyState</span></span><br><span class="line"><span class="comment">// 对象状态（integer），状态值</span></span><br><span class="line"><span class="comment">// 0 = 未初始化，未调用send()方法</span></span><br><span class="line"><span class="comment">// 1 = 读取中，已调用send()，正在发送请求</span></span><br><span class="line"><span class="comment">// 2 = 已读取，send方法执行完成，接收到全部响应内容</span></span><br><span class="line"><span class="comment">// 3 = 交互中，正在解析响应内容</span></span><br><span class="line"><span class="comment">// 4 = 完成，响应内容解析完成</span></span><br><span class="line">      <span class="comment">// status服务器返回的状态码，	</span></span><br><span class="line">      xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">			callback(xhr.responseText);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			alert(<span class="string">'error'</span>  );</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>将代码文件放置www这个文件夹下，然后创建一个TXT文本写数据信息，保存时编码改成UTF-8，将这个TXT作为URL传入Ajax     当调用时<br><code>Ajax(&quot;url&quot;:tell.txt, &quot;method&quot;:&#39;get&#39;, &quot;flag&quot;:&#39;true, &quot;data&quot;:&#39;&#39;, &quot;callback&quot;:function(data) {});</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">Ajax</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> xhr = <span class="literal">null</span>,</span><br><span class="line">         url = json.url,</span><br><span class="line">         flag = json.flag,</span><br><span class="line">         data = json.data,</span><br><span class="line">         callback = json.callback;</span><br><span class="line">     <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRepuest) &#123;      </span><br><span class="line">         xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>)</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> (method == <span class="string">'get'</span>) &#123;              </span><br><span class="line">         xhr.open(<span class="string">'get'</span>, url, flag);     </span><br><span class="line">         xhr.send();                     </span><br><span class="line">     &#125;<span class="keyword">else</span> <span class="keyword">if</span> (methed == <span class="string">'post'</span>) &#123;       </span><br><span class="line">         xhr.open(<span class="string">'post'</span>, url, flag); </span><br><span class="line">         xhr.setRequsetHeader(<span class="string">'content-type'</span>,<span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">         xhr.send(data);                 </span><br><span class="line">     &#125;</span><br><span class="line">     xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> ( xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">		callback(xhr.responseText);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		alert(<span class="string">'error'</span>  );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>应用：瀑布流</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//callback</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addImg</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">		<span class="comment">//http://www.wookmark.com/api/json/popular?page=</span></span><br><span class="line">		<span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(data);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; obj.length; i++) &#123;</span><br><span class="line">			<span class="keyword">var</span> index = getMinLiHeight();</span><br><span class="line">			<span class="comment">//创建dom结构</span></span><br><span class="line">			<span class="keyword">var</span> oDiv = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">			<span class="keyword">var</span> oImg = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">			<span class="keyword">var</span> oP = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">			oImg.style.height = ( <span class="number">200</span> / obj[i].width ) * obj[i].height + <span class="string">'px'</span>;</span><br><span class="line">			oImg.src = obj[i].image;</span><br><span class="line">			oDiv.appendChild(oImg);</span><br><span class="line">			oDiv.appendChild(oP);</span><br><span class="line">			oP.innerText = obj[i].title;</span><br><span class="line">			oLi[index].appendChild(oDiv);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		loadFinish = <span class="literal">true</span>;</span><br><span class="line">	&#125;	</span><br><span class="line"></span><br><span class="line">	<span class="comment">//加载图片</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	API:</span></span><br><span class="line"><span class="comment">		getPics.php</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			参数</span></span><br><span class="line"><span class="comment">			cpage : 获取数据的页数</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">loadImg</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (loadFinish) &#123;</span><br><span class="line">			Ajax(<span class="string">'get'</span>, <span class="string">'getPics.php'</span>, <span class="literal">true</span>, addImg,<span class="string">'cpage'</span> + iPage)</span><br><span class="line">			iPage++;</span><br><span class="line">			loadFinish = <span class="literal">false</span>;</span><br><span class="line">		</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	loadImg();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+<li>enctype：是否对数据进行编码<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;默认值”application/x-www-form-urlencoded”编码所有字符<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;”multipart/form-data”不对字符进行编码
+        
+          <a class="article-more-a" href="/2018/05/06/Ajax/#more">more >></a>
+        
       
 
       
@@ -361,25 +271,10 @@
 <li>创建document文档，开始解析web页面。解析完HTML元素和它们文本内容后添加Element对象和Text节点到文档中。<br>在这个阶段document.readystate=’loading’。</li>
 <li>遇到link外部css，创建线程加载，并继续解析文档。</li>
 <li>遇到script外部js且没有设置async,defer,浏览器创建线程加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</li>
-<li>遇到script外部js，并且设置有async、defter，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。</li>
-<li>遇到img等，先正常解析dom结构，然后浏览器异步加载src并继续解析文档。</li>
-<li>在文档解析完成后，document.readyState = ‘interactive’。</li>
-<li>文档解析完成后，所有设置有defer的脚本会按照顺序执行。</li>
-<li>document对象会触发DOMContentLoaded事件，标志着从同步脚本执行阶段转为事件驱动阶段。</li>
-<li>当所有async的脚本加载完成并执行后，img等加载完成后，document.readyState=’complete’，window对象触发load事件。</li>
-<li>以异步的方式处理用户输入，网络事件等。      </li>
-</ol>
-<h2 id="DOM"><a href="#DOM" class="headerlink" title=" DOM"></a> DOM</h2><p>DOM对象包括window、history、navigator、screen、location</p>
-<ul>
-<li>navigator.userAgent：它可以返回客户端代理值，用这个我们可以判断当前用户使用的是PC端还是移动端，是什么浏览器。</li>
-<li><p>screen：查看除了window任务栏外屏幕的的高度和宽度。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">screen.availHeight;</span><br><span class="line">screen.availWidth;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>history:<br><code>History.length</code>：查看浏览历史的长度<br><code>History.back()</code>：让浏览器进入到下一个历史页面<br><code>History.foward()</code>：可以让浏览器回到上一个历史页面<br><code>history.go()</code>：<code>History.back()</code>与<code>History.foward()</code>的结合</p>
-</li>
-<li>location：<br><code>Location.host</code>：返回当前的主机名和当前URL端口号<br><code>Location.hash</code>：跳转到相应ID元素的位置，可配合CSS3的:target一起改变元素样式<br><code>Location.reload()</code>：可以重新加载当前页面</li>
-</ul>
-
+<li>遇到script外部js，并且设置有async、defter，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。
+        
+          <a class="article-more-a" href="/2018/05/05/异步加载/#more">more >></a>
+        
       
 
       

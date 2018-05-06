@@ -16,7 +16,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T11:57:36.098Z">
+<meta property="og:updated_time" content="2018-05-06T15:47:59.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步加载, DOM">
 <meta name="twitter:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
@@ -191,7 +191,7 @@
 <li>创建document文档，开始解析web页面。解析完HTML元素和它们文本内容后添加Element对象和Text节点到文档中。<br>在这个阶段document.readystate=’loading’。</li>
 <li>遇到link外部css，创建线程加载，并继续解析文档。</li>
 <li>遇到script外部js且没有设置async,defer,浏览器创建线程加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</li>
-<li>遇到script外部js，并且设置有async、defter，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。</li>
+<li>遇到script外部js，并且设置有async、defter，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。<a id="more"></a></li>
 <li>遇到img等，先正常解析dom结构，然后浏览器异步加载src并继续解析文档。</li>
 <li>在文档解析完成后，document.readyState = ‘interactive’。</li>
 <li>文档解析完成后，所有设置有defer的脚本会按照顺序执行。</li>
