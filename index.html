@@ -265,13 +265,7 @@
 <ol>
 <li>defer异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行；</li>
 <li>async异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用，不能把代码雪灾script标签里，且不能保证按顺序执行。</li>
-<li>动态添加script标签，插入DOM中。</li>
-</ol>
-<h2 id="JavaScript加载时间线"><a href="#JavaScript加载时间线" class="headerlink" title="JavaScript加载时间线"></a>JavaScript加载时间线</h2><ol>
-<li>创建document文档，开始解析web页面。解析完HTML元素和它们文本内容后添加Element对象和Text节点到文档中。<br>在这个阶段document.readystate=’loading’。</li>
-<li>遇到link外部css，创建线程加载，并继续解析文档。</li>
-<li>遇到script外部js且没有设置async,defer,浏览器创建线程加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</li>
-<li>遇到script外部js，并且设置有async、defter，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。
+<li>动态添加script标签，插入DOM中。
         
           <a class="article-more-a" href="/2018/05/05/异步加载/#more">more >></a>
         
