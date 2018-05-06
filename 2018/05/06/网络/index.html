@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络##JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;">
+  <meta name="description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nb">
 <meta property="og:type" content="article">
 <meta property="og:title">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/05/06/网络/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络##JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;">
+<meta property="og:description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nb">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T10:03:37.778Z">
+<meta property="og:updated_time" content="2018-05-06T11:36:42.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title">
-<meta name="twitter:description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络##JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;">
+<meta name="twitter:description" content="title: 异步加载date: 2018-05-05 18:48:14tags: 网络JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nb">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -167,14 +167,13 @@
       
         <hr>
 <p>title: 异步加载<br>date: 2018-05-05 18:48:14<br>tags:</p>
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><p>##JavaScript异步加载<br>JavaScript异步加载方案：</p>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h2 id="JavaScript异步加载"><a href="#JavaScript异步加载" class="headerlink" title="JavaScript异步加载"></a>JavaScript异步加载</h2><p>JavaScript异步加载方案：</p>
 <ol>
 <li>defer异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行；</li>
 <li>async异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用，不能把代码雪灾script标签里，且不能保证按顺序执行。</li>
 <li>动态添加script标签，插入DOM中。</li>
 </ol>
-<p>##JavaScript加载时间线</p>
-<ol>
+<h2 id="JavaScript加载时间线"><a href="#JavaScript加载时间线" class="headerlink" title="JavaScript加载时间线"></a>JavaScript加载时间线</h2><ol>
 <li>创建document文档，开始解析web页面。解析完HTML元素和它们文本内容后添加Element对象和Text节点到文档中。<br>在这个阶段document.readystate=’loading’。</li>
 <li>遇到link外部css，创建线程加载，并继续解析文档。</li>
 <li>遇到script外部js且没有设置async,defer,浏览器创建线程加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</li>
@@ -259,8 +258,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/05/05/异步加载/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">异步加载</div>
+    <a href="/2018/05/06/Ajax/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ajax</div>
       <i class="icon-circle-right"></i>
     </a>
   
