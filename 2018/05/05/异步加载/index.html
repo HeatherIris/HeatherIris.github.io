@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
-  <title>异步加载 | </title>
+  <title>异步加载, DOM | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引">
+  <meta name="description" content="JavaScript异步加载JavaScript异步加载方案： defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用">
 <meta name="keywords" content="网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异步加载">
+<meta property="og:title" content="异步加载, DOM">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/05/05/异步加载/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引">
+<meta property="og:description" content="JavaScript异步加载JavaScript异步加载方案： defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T10:11:22.801Z">
+<meta property="og:updated_time" content="2018-05-06T11:34:00.306Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异步加载">
-<meta name="twitter:description" content="JavaScript异步加载JavaScript异步加载方案：  defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引">
+<meta name="twitter:title" content="异步加载, DOM">
+<meta name="twitter:description" content="JavaScript异步加载JavaScript异步加载方案： defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      异步加载
+      异步加载, DOM
     </h1>
   
 
@@ -181,13 +181,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JavaScript异步加载"><a href="#JavaScript异步加载" class="headerlink" title="JavaScript异步加载"></a>JavaScript异步加载</h1><p>JavaScript异步加载方案：</p>
-<ol>
+        <h1 id="JavaScript异步加载"><a href="#JavaScript异步加载" class="headerlink" title="JavaScript异步加载"></a>JavaScript异步加载</h1><h2 id="JavaScript异步加载方案："><a href="#JavaScript异步加载方案：" class="headerlink" title="JavaScript异步加载方案："></a>JavaScript异步加载方案：</h2><ol>
 <li>defer异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行；</li>
 <li>async异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用，不能把代码雪灾script标签里，且不能保证按顺序执行。</li>
 <li>动态添加script标签，插入DOM中。</li>
 </ol>
-<h1 id="JavaScript加载时间线"><a href="#JavaScript加载时间线" class="headerlink" title="JavaScript加载时间线"></a>JavaScript加载时间线</h1><ol>
+<h2 id="JavaScript加载时间线"><a href="#JavaScript加载时间线" class="headerlink" title="JavaScript加载时间线"></a>JavaScript加载时间线</h2><ol>
 <li>创建document文档，开始解析web页面。解析完HTML元素和它们文本内容后添加Element对象和Text节点到文档中。<br>在这个阶段document.readystate=’loading’。</li>
 <li>遇到link外部css，创建线程加载，并继续解析文档。</li>
 <li>遇到script外部js且没有设置async,defer,浏览器创建线程加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。</li>
@@ -197,8 +196,17 @@
 <li>文档解析完成后，所有设置有defer的脚本会按照顺序执行。</li>
 <li>document对象会触发DOMContentLoaded事件，标志着从同步脚本执行阶段转为事件驱动阶段。</li>
 <li>当所有async的脚本加载完成并执行后，img等加载完成后，document.readyState=’complete’，window对象触发load事件。</li>
-<li>以异步的方式处理用户输入，网络事件等。</li>
+<li>以异步的方式处理用户输入，网络事件等。<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1>DOM对象包括window、history、navigator、screen、location<ul>
+<li>navigator.userAgent：它可以返回客户端代理值，用这个我们可以判断当前用户使用的是PC端还是移动端，是什么浏览器。</li>
+<li>screen：查看除了window任务栏外屏幕的的高度和宽度。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">screen.availHeight;</span><br><span class="line">screen.availWidth;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
+<ul>
+<li>history:<br><code>`History.length`</code>：查看浏览历史的长度<br><code>`History.back()`</code>：让浏览器进入到下一个历史页面<br><code>`History.foward()`</code>：可以让浏览器回到上一个历史页面<br><code>`history.go()`</code>：<code>`History.back()`</code>与<code>`History.foward()`</code>的结合</li>
+<li>location：<br><code>Location.host</code>：返回当前的主机名和当前URL端口号<br><code>Location.hash</code>：跳转到相应ID元素的位置，可配合CSS3的:target一起改变元素样式<br><code>Location.reload()</code>：可以重新加载当前页面</li>
+</ul>
 
       
 
@@ -281,6 +289,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/05/06/Ajax/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Ajax
+        
+      </div>
+    </a>
   
   
     <a href="/2017/10/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
