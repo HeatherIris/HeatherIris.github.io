@@ -9,14 +9,14 @@
   <title>异步加载, DOM | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
-<meta name="keywords" content="网络">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="异步加载, DOM">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/05/05/异步加载/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-06T15:52:43.193Z">
+<meta property="og:updated_time" content="2018-05-07T11:14:08.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="异步加载, DOM">
 <meta name="twitter:description" content="JavaScript异步加载JavaScript异步加载方案：     defer异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行； async异步加载&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#0c52e8,#e9ba64);
+      background: linear-gradient(200deg,#150455,#dedbe9);
     }
   </style>
   
@@ -44,11 +44,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: linear-gradient(200deg,#0c52e8,#e9ba64)"></div>
+<div class="overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/girl.jpg" class="js-avatar">
+			<img src="/麻洛美.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">heather</a></h1>
@@ -62,7 +62,7 @@
 	        
 				<li><a href="/tags">所有文章</a></li>
 	        
-				<li><a href="/">记录</a></li>
+				<li><a href="/record">记录</a></li>
 	        
 			</ul>
 		</nav>
@@ -101,14 +101,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#0c52e8,#e9ba64)"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/girl.jpg" class="js-avatar">
+				<img src="/麻洛美.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">heather</h1>
@@ -146,7 +146,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags">所有文章</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/">记录</a></li>
+					<li style="width: 33.333333333333336%"><a href="/record">记录</a></li>
 		        
 				</ul>
 			</nav>
@@ -224,7 +224,7 @@ JavaScript加载时间线</li>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -445,6 +445,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
             
             <div class="clearfix"></div>

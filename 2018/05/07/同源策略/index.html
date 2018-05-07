@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title>同源策略 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
+  <meta name="description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
+<meta name="keywords" content="网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同源策略">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/05/07/同源策略/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-07T01:29:18.783Z">
+<meta property="og:updated_time" content="2018-05-07T11:11:45.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同源策略">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -29,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#0c52e8,#e9ba64);
+      background: linear-gradient(200deg,#150455,#dedbe9);
     }
   </style>
   
@@ -43,11 +44,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: linear-gradient(200deg,#0c52e8,#e9ba64)"></div>
+<div class="overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/girl.jpg" class="js-avatar">
+			<img src="/麻洛美.png" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">heather</a></h1>
@@ -61,7 +62,7 @@
 	        
 				<li><a href="/tags">所有文章</a></li>
 	        
-				<li><a href="/">记录</a></li>
+				<li><a href="/record">记录</a></li>
 	        
 			</ul>
 		</nav>
@@ -100,14 +101,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#0c52e8,#e9ba64)"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/girl.jpg" class="js-avatar">
+				<img src="/麻洛美.png" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">heather</h1>
@@ -145,7 +146,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/tags">所有文章</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/">记录</a></li>
+					<li style="width: 33.333333333333336%"><a href="/record">记录</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,7 +181,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Ajax通过URL来获取资源也会受到同源策略的限制。<br><a id="more"></a></p>
+<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略    "></a>同源策略    </h1><p>同源策略是一个重要的概念，是浏览器最基础最核心的部分。</p>
+<h2 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h2><p>域名、协议名、端口号都相同。我们可以在百度页面的脚本访问百度其他子页面的资源，但是不允许访问谷歌页面的数据资源</p>
+<p>###我们在浏览器输出一个URL之后会发生什么   </p>
+<ol>
+<li>浏览器通过DNS把域名解析成IP地址</li>
+<li>客户端通过TCP协议建立到服务器的TCP连接（三次握手四次挥手）</li>
+<li>客户端向web服务器发送http协议包，请求服务器里面的资源文档</li>
+<li>服务器向客户端发送http协议应答包</li>
+<li>客户端和服务器断开，客户端开始解析处理HTML文档 </li>
+</ol>
+<p>###三次握手<br>三次交互建立连接。</p>
+<blockquote>
+<p>为了准确无误的将数据送达目标处，TCP协议采用了三次握手策略。用TCP协议把数据包送出去后，TCP不会对传送后的情况置之不理，它会向对方确认是否成功送达。握手过程中使用了TCP的标志（flag）–SYN和ACK       </p>
+</blockquote>
+<ol>
+<li>发送端先发送一个带有SYN标志的数据包给接收端</li>
+<li>接收端收到数据包后回传给发送端一个带有SYN/ACK的标志的数据包确认已经传达</li>
+<li>发送端收到后再回传一个带有ACK标志的数据包，握手结束</li>
+</ol>
+<p>###四次挥手<br>断开客户端与服务器之间的连接</p>
+<ol>
+<li>客户端向服务器发送一个带有FIN/ACK标志的报文，告诉服务器要关闭TCP连接</li>
+<li>服务器收到这个数据包之后，返回一个带有ACK标志的报文。</li>
+<li>服务器断开与客户端之间的连接，发送一个带有FIN/ACK标志的报文给客户端</li>
+<li>客户端返回一个带有ACK标志的报文，表示挥手结束</li>
+</ol>
+
       
 
       
@@ -188,6 +216,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -252,6 +291,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/05/07/跨域方案/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          跨域方案
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/05/06/Ajax/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Ajax</div>
@@ -281,7 +329,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略    </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源"><span class="toc-number">1.1.</span> <span class="toc-text">同源</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -394,6 +442,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
             
             <div class="clearfix"></div>
