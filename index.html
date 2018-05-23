@@ -28,7 +28,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#150455,#dedbe9);
+      background: linear-gradient(200deg,#010646,#e0e1ef);
     }
   </style>
   
@@ -42,7 +42,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
+<div class="overlay" style="background: linear-gradient(#010646,#e0e1ef)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -57,8 +57,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags">所有文章</a></li>
 	        
 				<li><a href="/record">记录</a></li>
 	        
@@ -99,7 +97,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#150455,#dedbe9)"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(#010646,#e0e1ef)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -113,8 +111,6 @@
 			</hgroup>
 			
 			
-			
-				
 			
 				
 			
@@ -137,14 +133,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags">所有文章</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/record">记录</a></li>
+					<li style="width: 50%"><a href="/record">记录</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,6 +154,275 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-JavaScript（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/10/JavaScript（一）/">JavaScript（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/10/JavaScript（一）/" class="archive-article-date">
+  	<time datetime="2018-05-10T09:55:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h1><ul>
+<li>开发mosaic的团队开发了Netscape navigator，是很多浏览器的前身</li>
+<li>JavaScript原名livescript，后与sun公司合作，sun公司的Java很出名，改名为JavaScript</li>
+<li>浏览器的组成分为了1.渲染引擎2.js引擎</li>
+<li>JavaScript特点：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.解释性语言，不需要编译，可跨平台。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.单线程，同时只能执行一件事情。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.为了统一js标准，制定了ECMA标准            <h1 id="JavaScript基本语法"><a href="#JavaScript基本语法" class="headerlink" title="JavaScript基本语法"></a>JavaScript基本语法</h1>JavaScript的类型</li>
+</ul>
+<hr>
+<p>JavaScript中共有7种内置类型：null、undefined、boolean、number、string、object、symble(es6)中新增。<br>变量没有类型，但它们持有的值有类型，类型定义了值得行为特征。<br>undefined是值的一种，undedared表示还没被声明过。   </p>
+<h2 id="JavaScript中的值类型"><a href="#JavaScript中的值类型" class="headerlink" title="JavaScript中的值类型"></a>JavaScript中的值类型</h2><p>js中的数据的值主要为<strong>不可改变的原始值</strong>和<strong>引用值</strong>。<br>原始值主要有：number，string，Boolean，underfined，null这些栈数据（null有值，不过这个值是空值，underfined完全没有值）。<br>引用值主要有array，object，function这些堆数据。<br>原始值存放在栈里面，引用值存放在堆里面。栈内存一旦被赋值就不可以改变了，因此原始值不能被改变，引用值可以被改变。 </p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>用typeof可以检测数据的类型<br>typeof能返回的数据类型有六种：number，string，Boolean，underfined，object，function<br>数组和null都属于object<br>NaN属于number类型。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/10/JavaScript（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Git-cmd基本指令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/10/Git-cmd基本指令/">Git,cmd基本指令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/10/Git-cmd基本指令/" class="archive-article-date">
+  	<time datetime="2018-05-10T09:47:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/10/Git-cmd基本指令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-cookie、localStorage、sessionStarage的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/10/cookie、localStorage、sessionStarage的区别/">cookie、localStorage、sessionStarage的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/10/cookie、localStorage、sessionStarage的区别/" class="archive-article-date">
+  	<time datetime="2018-05-10T09:45:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/10/cookie、localStorage、sessionStarage的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-状态码，首部及HTTP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/10/状态码，首部及HTTP/">状态码，首部及HTTP</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/10/状态码，首部及HTTP/" class="archive-article-date">
+  	<time datetime="2018-05-10T09:44:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/10/状态码，首部及HTTP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-跨域方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -181,7 +444,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>由于满足同源的脚本才可以获取资源，这样会限制资源之间的相互利用，比如ajax</p>
+<h2 id="解决跨域问题的方法"><a href="#解决跨域问题的方法" class="headerlink" title="解决跨域问题的方法"></a>解决跨域问题的方法</h2><ol>
+<li>flash（一般不考虑）</li>
+<li>iframe + document.domain<br>这个方法主要针对主域名相同的子域名之间，具体做法：可以在<a href="http://www.a.com/a.html和http://script.a.com/b.html两个文件中分别加上document.domain=&quot;a.com&quot;,然后通过a.html.创建一个iframe，然后去控制iframe的contentDocument,实现两个文件之间的交互。" target="_blank" rel="noopener">http://www.a.com/a.html和http://script.a.com/b.html两个文件中分别加上document.domain=&quot;a.com&quot;,然后通过a.html.创建一个iframe，然后去控制iframe的contentDocument,实现两个文件之间的交互。</a><br>缺点：安全性低，操作繁琐</li>
+<li>iframe + location.hash<br>利用hash来进行传值，利用hash值来进行数据传递。改变hash值会会导致页面刷新。</li>
+<li>iframe + window.name<br>主页面有一个iframe,通过修改页面window.name来获取这个值。</li>
+<li>服务器代理中转</li>
+<li>jsonp<br>jsonp</li>
+</ol>
+<hr>
+<p>###原理<br>web页面上script引入js文件不受跨域的影响，凡是有src属性的标签都不受同源策略的影响。<br>我们把资源放到script标签src里面，这样就把数据放到服务器上（使用jsonp的格式）。服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。</p>
+<p>###具体实现<br>搜索框<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">"Microsoft Yahei"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#wrapper</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">36px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">220px</span> auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#text</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">350px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">32px</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#btn</span>&#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">8px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">36px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#023</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#list</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">36px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#list</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#000</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">id</span>=<span class="string">"btn"</span> <span class="attr">value</span>=<span class="string">"search"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;li&gt;</span></span><br><span class="line"><span class="comment">            &lt;a href="https://www.baidu.com/s?wd='+data[i]+'" target="_blank"&gt;"+data[i]+"&lt;/a&gt;</span></span><br><span class="line"><span class="comment">        &lt;/li&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> oWrapper = <span class="built_in">document</span>.getElementById(<span class="string">"wrapper"</span>);</span><br><span class="line">    <span class="keyword">var</span> oText = <span class="built_in">document</span>.getElementById(<span class="string">"text"</span>);</span><br><span class="line">    <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>);</span><br><span class="line">    <span class="keyword">var</span> oList = <span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//当我们在输入栏中输入文字的时候，下面出来的那些根据关键字所显示的结果都是存放在https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=输入值value&amp;cb=处理函数，这个url里面的，而且主要是在这个对象里面的s属性上。cb为跨域调用,是一个留给我们写处理函数的接口。</span></span><br><span class="line"><span class="comment">// 所以我们可以直接在input标签的keyup上面绑定这样一个事件：</span></span><br><span class="line">    oText.onkeyup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">        oList.style.display = <span class="string">"block"</span>;</span><br><span class="line">        <span class="keyword">var</span> oValue = oText.value;</span><br><span class="line">        <span class="keyword">var</span> oScript = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">        oScript.src = <span class="string">"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd="</span>+oValue+ <span class="string">"&amp;cb=oJson"</span>;</span><br><span class="line">        <span class="built_in">document</span>.body.appendChild(oScript);</span><br><span class="line">        <span class="built_in">document</span>.body.removeChild(oScript);</span><br><span class="line">    &#125;</span><br><span class="line">    oText.onblur = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">        oList.style.display = <span class="string">"none"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">oJson</span> (<span class="params">myJson</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> data = myJson.s;</span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">            str += <span class="string">"&lt;li&gt;&lt;a href='https://www.baidu.com/s?wd="</span>+data[i]+<span class="string">"' target='_blank'&gt;"</span>+data[i]+<span class="string">"&lt;/a&gt;&lt;/li&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        oList.innerHTML = str;</span><br><span class="line">    &#125;</span><br><span class="line">    oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> oValue = oText.value;</span><br><span class="line">        <span class="built_in">window</span>.open(<span class="string">"https://www.baidu.com/s?wd="</span>+oValue);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>HTML5 postMassage方法<br>HTML5中有一个功能是跨文档消息传输，主流浏览器包括IE及IE8以上都实现了这些功能。<br>postMassage(data, origin)方法接受两个参数，<br><strong>data:</strong>要传递的数据，html5规范中提到该参数可以是JavaScript的任意基本类型或可复制的对象，然而并不是所有浏览器都做到了这点儿，部分浏览器只能处理字符串参数，所以我们在传递参数的时候需要使用JSON.stringify()方法对对象参数序列化。<br><strong>origin：</strong>字符串参数，指明目标窗口的源，URL会被忽略，所以可以不写，这个参数是为了安全考虑，postMessage()方法只会将message传递给指定窗口，当然如果愿意也可以建参数设置为”*”，这样可以传递给任意窗口，如果要指定和当前窗口同源的话设置为”/“。</li>
+</ol>
+
       
 
       
@@ -189,6 +469,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -379,157 +670,10 @@
 
 
   
-    <article id="post-异步加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/05/异步加载/">异步加载, DOM</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/05/异步加载/" class="archive-article-date">
-  	<time datetime="2018-05-05T10:48:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JavaScript异步加载"><a href="#JavaScript异步加载" class="headerlink" title="JavaScript异步加载"></a>JavaScript异步加载</h2><p><strong>JavaScript异步加载方案：</strong>   </p>
-<ol>
-<li>defer异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;在script标签的行间写一个defer=”defer”就可以让script变成异步加载，但只有等DOMTree全部解析完成后才会异步执行；</li>
-<li>async异步加载<br>&nbsp;&nbsp;&nbsp;&nbsp;它是HTML5的属性（IE6-IE8不适用）。这种方法只能引用，不能把代码雪灾script标签里，且不能保证按顺序执行。</li>
-<li>动态添加script标签，插入DOM中。
-        
-          <a class="article-more-a" href="/2018/05/05/异步加载/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/05/异步加载/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/07/hello-world/">一些记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/07/hello-world/" class="archive-article-date">
-  	<time datetime="2017-10-07T04:04:10.760Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/07/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -710,7 +854,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">青は一番暖かい色</div>
   	  	
     	</section>
     
