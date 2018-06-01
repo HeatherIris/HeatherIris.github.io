@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
-  <title>Archives: 2018 | </title>
+  <title>JavaScript（二） | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
-<meta property="og:type" content="website">
-<meta property="og:title">
-<meta property="og:url" content="https://github.com/HeatherIris/archives/2018/page/2/index.html">
+  <meta name="description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
+<meta name="keywords" content="预编译 面向对象编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript（二）">
+<meta property="og:url" content="https://github.com/HeatherIris/2018/05/23/JavaScript（二）/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-01T14:38:45.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:title" content="JavaScript（二）">
+<meta name="twitter:description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -153,101 +155,184 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/06/Ajax/" class="archive-article-date">
-  	<time datetime="2018-05-06T11:34:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/06/Ajax/">Ajax</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript（二）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/23/JavaScript（二）/" class="archive-article-date">
+  	<time datetime="2018-05-23T14:52:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript运行三部曲"><a href="#JavaScript运行三部曲" class="headerlink" title="JavaScript运行三部曲"></a>JavaScript运行三部曲</h2><p>1.语法分析<br>2.预编译<br>3.解释执行<br><a id="more"></a></p>
+<p>###有两个重要的概念需要掌握：<br>1.imply global：暗示全局变量<br>如果任何变量未经声明就赋值使用，此变量就会为全局变量window所有，并且c成为window对象的一个属性。<br>2.一切声明的全局变量，都是window属性。</p>
+<h2 id="预编译的过程"><a href="#预编译的过程" class="headerlink" title="预编译的过程"></a>预编译的过程</h2><ol>
+<li>创建AO对象（函数执行的前一刻会产生一个上下文，这个上下文就是AO对象，AO = {}）</li>
+<li>寻找形参和变量声明，将变量和形参作为AO对象的属性名添加到对象中，值为undefined。注意函数声明不叫变量。</li>
+<li>将实参值和形参值相统一</li>
+<li>在函数体里面寻找函数声明。将函数名作为属性名，值为这个函数的函数体。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    conlole.log (a);     <span class="comment">//function () &#123;&#125;</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    a = <span class="number">222</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a)       <span class="comment">//222</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">console</span>.log(b);      <span class="comment">//function () &#123;&#125;</span></span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">&#125;</span><br><span class="line">test(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> <span class="keyword">var</span> AO = &#123;&#125;;</span><br><span class="line"><span class="number">2.</span> AO = &#123;</span><br><span class="line">    a:<span class="literal">undefined</span>,</span><br><span class="line">    b:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">3.</span> AO = &#123;</span><br><span class="line">    a:<span class="number">1</span>,</span><br><span class="line">    b:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="number">4.</span> AO = &#123;</span><br><span class="line">    a:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    b:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="对象与构造函数包装类"><a href="#对象与构造函数包装类" class="headerlink" title="对象与构造函数包装类"></a>对象与构造函数包装类</h1><h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>JavaScript中，对象是6个基础类型之一，有包括function在内的子类型，不同的子类型具有不同的行为。<br>object是key/value的集合，.propName.或[“propName”]来获取属性值，引擎调用内部的默认[[get]]操作。<br>属性的特性可以通过属性描述符来控制，可写可配置。 </p>
+<blockquote>
+<p>object.preventExtensions(..) + configurable:false = Object.seal(密封)<br>object.preventExtensions(..) + configurable:false + writable:false = Object.freeze(最高级别)<br>深度冻结：在这个对象上调用Object.freeze(..)然后遍历它引用的所有对象     </p>
+</blockquote>
+<p>属性不一定包含值，它们可能是具备getter/setter的访问描述符，此外属性的可枚举与不可枚举决定了它们是否会出现在for-in循环中。<br>可以使用ES6的for-of语法来遍历数据结构，for-of会寻找内置或自定义@itarator对象并调用他的next()方法来遍历数据值。</p>
+<p><font color="#red" face="黑体">面向对象编程</font><br>类设计模式：封装（实例化）、继承、多态</p>
+<p>###一些理论<br>类/继承描述了代码的组织结构形式，在软件中对真实世界中的问题领域的建模方法。<br>面向对象编程强调了数据和操作数据的行为本质上是互相关联，把数据以及与它相关的行为封装起来。<br>类：对数据结构进行分类<br>类的另一个核心概念是多态：父类的通用行为可以被子类用更特殊的行为重写，从重写行为中引用基础行为。</p>
+<p>###对象创建方法</p>
+<ol>
+<li>对象字面量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;&nbsp;obj&nbsp;&nbsp;=&nbsp;&nbsp;{};</li>
+<li>构造函数<br>构造函数分两种：系统自带构造函数和自定义构造函数                 </li>
+</ol>
+<ul>
+<li>系统自带构造函数<br>创建对象的构造函数是Object(),Number(),String(),Boolean(),Array()<br>通过<code>var obj = new Object();</code>这条语句，就创建了一个对象。</li>
+<li>自定义构造函数<br><code>function Person () {}</code>声明一个构造函数Person<br>用new操作符来创建对象，只有new才会有this</li>
+</ul>
+<p><code>var oPerson = new Person();  typeof oPerson  //object</code></p>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><p>原始值是不可以改变的，只有对象才有属性和方法。<br><code>str.length</code>我们在调用这一行代码前，程序会自动把str包装成一个字符串对象，在这行代码执行完毕后再销毁这个字符串对象</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">预编译 面向对象编程</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/HeatherIris/2018/05/23/JavaScript（二）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/05/异步加载/" class="archive-article-date">
-  	<time datetime="2018-05-05T10:48:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/10/JavaScript（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/05/异步加载/">异步加载, DOM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript运行三部曲"><span class="toc-number">1.</span> <span class="toc-text">JavaScript运行三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预编译的过程"><span class="toc-number">2.</span> <span class="toc-text">预编译的过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象与构造函数包装类"><span class="toc-number"></span> <span class="toc-text">对象与构造函数包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装类"><span class="toc-number">2.</span> <span class="toc-text">包装类</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -271,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
