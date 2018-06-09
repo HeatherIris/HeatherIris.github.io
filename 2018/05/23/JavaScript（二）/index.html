@@ -9,14 +9,14 @@
   <title>JavaScript（二） | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
-<meta name="keywords" content="预编译 面向对象编程">
+<meta name="keywords" content="JavaScript 预编译 面向对象编程 遍历">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript（二）">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/05/23/JavaScript（二）/index.html">
 <meta property="og:site_name">
 <meta property="og:description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-01T14:38:45.222Z">
+<meta property="og:updated_time" content="2018-06-09T05:47:47.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（二）">
 <meta name="twitter:description" content="JavaScript运行三部曲1.语法分析2.预编译3.解释执行">
@@ -30,7 +30,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#000,#e0e1ef);
+      background: linear-gradient(200deg,#f7f6f8,#0d0464);
     }
   </style>
   
@@ -44,7 +44,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: linear-gradient(#000,#e0e1ef)"></div>
+<div class="overlay" style="background: linear-gradient(#f7f6f8,#0d0464)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -99,7 +99,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: linear-gradient(#000,#e0e1ef)"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(#f7f6f8,#0d0464)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -176,7 +176,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="JavaScript运行三部曲"><a href="#JavaScript运行三部曲" class="headerlink" title="JavaScript运行三部曲"></a>JavaScript运行三部曲</h2><p>1.语法分析<br>2.预编译<br>3.解释执行<br><a id="more"></a></p>
-<p>###有两个重要的概念需要掌握：<br>1.imply global：暗示全局变量<br>如果任何变量未经声明就赋值使用，此变量就会为全局变量window所有，并且c成为window对象的一个属性。<br>2.一切声明的全局变量，都是window属性。</p>
+<h3 id="有两个重要的概念需要掌握"><a href="#有两个重要的概念需要掌握" class="headerlink" title="有两个重要的概念需要掌握"></a>有两个重要的概念需要掌握</h3><p>1.imply global：暗示全局变量<br>如果任何变量未经声明就赋值使用，此变量就会为全局变量window所有，并且c成为window对象的一个属性。<br>2.一切声明的全局变量，都是window属性。</p>
 <h2 id="预编译的过程"><a href="#预编译的过程" class="headerlink" title="预编译的过程"></a>预编译的过程</h2><ol>
 <li>创建AO对象（函数执行的前一刻会产生一个上下文，这个上下文就是AO对象，AO = {}）</li>
 <li>寻找形参和变量声明，将变量和形参作为AO对象的属性名添加到对象中，值为undefined。注意函数声明不叫变量。</li>
@@ -188,11 +188,13 @@
 <blockquote>
 <p>object.preventExtensions(..) + configurable:false = Object.seal(密封)<br>object.preventExtensions(..) + configurable:false + writable:false = Object.freeze(最高级别)<br>深度冻结：在这个对象上调用Object.freeze(..)然后遍历它引用的所有对象     </p>
 </blockquote>
-<p>属性不一定包含值，它们可能是具备getter/setter的访问描述符，此外属性的可枚举与不可枚举决定了它们是否会出现在for-in循环中。<br>可以使用ES6的for-of语法来遍历数据结构，for-of会寻找内置或自定义@itarator对象并调用他的next()方法来遍历数据值。</p>
+<p>属性不一定包含值，它们可能是具备getter/setter的访问描述符，此外属性的可枚举与不可枚举决定了它们是否会出现在for-in循环中。<br>可以使用ES6的for-of语法来遍历数据结构，for-of会寻找内置或自定义@@itarator对象并调用他的next()方法来遍历数据值。</p>
+<h2 id="关于遍历"><a href="#关于遍历" class="headerlink" title="关于遍历"></a>关于遍历</h2><p>for-in循环可以用来遍历对象的可枚举属性列表，无法获取属性值。<br>ES5中增加了一些数组的属性迭代器forEach(),every(),some(),接受回调函数并把他们应用到数组的每个元素上，但是他们对回调函数的处理方式不同<br>forEach()遍历数组中所有值并忽略回调函数返回值。<br>every()会一直运行到回调函数返回false<br>some()会一直运行到回调函数返回true<br>every()和some()与break类似会提前终止遍历。<br>遍历数组下标采用的是数字顺序，遍历对象属性时的顺序根据JavaScript引擎可能不一样。<br>ES6中增加了一种来遍历数组的for-of的循环语法，for-of向被访问的对象请求一个迭代器对象，通过迭代器对象的next()方法开遍历所有返回值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> v <span class="keyword">of</span> myArray) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="数组内置-iterator"><a href="#数组内置-iterator" class="headerlink" title="数组内置@@iterator"></a>数组内置@@iterator</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> it = myArray[<span class="built_in">Symbol</span>.iterator]();</span><br><span class="line">it.next()  <span class="comment">//&#123;value: 1, done: false&#125;</span></span><br><span class="line">it.next()  <span class="comment">//&#123;value: 2, done: false&#125;</span></span><br><span class="line">it.next()  <span class="comment">//&#123;value: 3, done: false&#125;</span></span><br><span class="line">it.next()  <span class="comment">//&#123;value: undefined, done: true&#125; 确定完成遍历</span></span><br></pre></td></tr></table></figure>
+<p>普遍对象没有@@iterator，可以给想遍历的对象定义@@iterator</p>
 <p><font color="#red" face="黑体">面向对象编程</font><br>类设计模式：封装（实例化）、继承、多态</p>
-<p>###一些理论<br>类/继承描述了代码的组织结构形式，在软件中对真实世界中的问题领域的建模方法。<br>面向对象编程强调了数据和操作数据的行为本质上是互相关联，把数据以及与它相关的行为封装起来。<br>类：对数据结构进行分类<br>类的另一个核心概念是多态：父类的通用行为可以被子类用更特殊的行为重写，从重写行为中引用基础行为。</p>
-<p>###对象创建方法</p>
-<ol>
+<h3 id="一些理论"><a href="#一些理论" class="headerlink" title="一些理论"></a>一些理论</h3><p>类/继承描述了代码的组织结构形式，在软件中对真实世界中的问题领域的建模方法。<br>面向对象编程强调了数据和操作数据的行为本质上是互相关联，把数据以及与它相关的行为封装起来。<br>类：对数据结构进行分类<br>类的另一个核心概念是多态：父类的通用行为可以被子类用更特殊的行为重写，从重写行为中引用基础行为。</p>
+<h3 id="对象创建方法"><a href="#对象创建方法" class="headerlink" title="对象创建方法"></a>对象创建方法</h3><ol>
 <li>对象字面量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;&nbsp;obj&nbsp;&nbsp;=&nbsp;&nbsp;{};</li>
 <li>构造函数<br>构造函数分两种：系统自带构造函数和自定义构造函数                 </li>
 </ol>
@@ -215,7 +217,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">预编译 面向对象编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 预编译 面向对象编程 遍历</a>
         		</li>
       		
 		</ul>
@@ -285,6 +287,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/06/05/JavaScript（三）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript（三）
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/05/10/JavaScript（一）/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">JavaScript（一）</div>
@@ -314,7 +325,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript运行三部曲"><span class="toc-number">1.</span> <span class="toc-text">JavaScript运行三部曲</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预编译的过程"><span class="toc-number">2.</span> <span class="toc-text">预编译的过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象与构造函数包装类"><span class="toc-number"></span> <span class="toc-text">对象与构造函数包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装类"><span class="toc-number">2.</span> <span class="toc-text">包装类</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript运行三部曲"><span class="toc-number">1.</span> <span class="toc-text">JavaScript运行三部曲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#有两个重要的概念需要掌握"><span class="toc-number">1.1.</span> <span class="toc-text">有两个重要的概念需要掌握</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#预编译的过程"><span class="toc-number">2.</span> <span class="toc-text">预编译的过程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#对象与构造函数包装类"><span class="toc-number"></span> <span class="toc-text">对象与构造函数包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">1.</span> <span class="toc-text">对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于遍历"><span class="toc-number">2.</span> <span class="toc-text">关于遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组内置-iterator"><span class="toc-number">3.</span> <span class="toc-text">数组内置@@iterator</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一些理论"><span class="toc-number">3.1.</span> <span class="toc-text">一些理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象创建方法"><span class="toc-number">3.2.</span> <span class="toc-text">对象创建方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装类"><span class="toc-number">4.</span> <span class="toc-text">包装类</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -434,7 +445,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">预编译 面向对象编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
               </li>
             
             <div class="clearfix"></div>

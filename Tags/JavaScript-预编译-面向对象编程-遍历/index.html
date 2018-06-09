@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
-  <title>同源策略 | </title>
+  <title>Tag: JavaScript 预编译 面向对象编程 遍历 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
-<meta name="keywords" content="网络">
-<meta property="og:type" content="article">
-<meta property="og:title" content="同源策略">
-<meta property="og:url" content="https://github.com/HeatherIris/2018/05/07/同源策略/index.html">
+  <meta name="description" content="青は一番暖かい色">
+<meta property="og:type" content="website">
+<meta property="og:title">
+<meta property="og:url" content="https://github.com/HeatherIris/tags/JavaScript-预编译-面向对象编程-遍历/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
+<meta property="og:description" content="青は一番暖かい色">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-07T11:11:45.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="同源策略">
-<meta name="twitter:description" content="Ajax通过URL来获取资源也会受到同源策略的限制。">
+<meta name="twitter:title">
+<meta name="twitter:description" content="青は一番暖かい色">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -155,194 +153,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-同源策略" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      同源策略
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/05/23/JavaScript（二）/" class="archive-article-date">
+  	<time datetime="2018-05-23T14:52:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-23</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/05/23/JavaScript（二）/">JavaScript（二）</a>
     </h1>
   
 
-        
-        <a href="/2018/05/07/同源策略/" class="archive-article-date">
-  	<time datetime="2018-05-07T01:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Ajax通过URL来获取资源也会受到同源策略的限制。<br><a id="more"></a></p>
-<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略    "></a>同源策略    </h1><p>同源策略是一个重要的概念，是浏览器最基础最核心的部分。</p>
-<h2 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h2><p>域名、协议名、端口号都相同。我们可以在百度页面的脚本访问百度其他子页面的资源，但是不允许访问谷歌页面的数据资源</p>
-<p>###我们在浏览器输出一个URL之后会发生什么   </p>
-<ol>
-<li>浏览器通过DNS把域名解析成IP地址</li>
-<li>客户端通过TCP协议建立到服务器的TCP连接（三次握手四次挥手）</li>
-<li>客户端向web服务器发送http协议包，请求服务器里面的资源文档</li>
-<li>服务器向客户端发送http协议应答包</li>
-<li>客户端和服务器断开，客户端开始解析处理HTML文档 </li>
-</ol>
-<p>###三次握手<br>三次交互建立连接。</p>
-<blockquote>
-<p>为了准确无误的将数据送达目标处，TCP协议采用了三次握手策略。用TCP协议把数据包送出去后，TCP不会对传送后的情况置之不理，它会向对方确认是否成功送达。握手过程中使用了TCP的标志（flag）–SYN和ACK       </p>
-</blockquote>
-<ol>
-<li>发送端先发送一个带有SYN标志的数据包给接收端</li>
-<li>接收端收到数据包后回传给发送端一个带有SYN/ACK的标志的数据包确认已经传达</li>
-<li>发送端收到后再回传一个带有ACK标志的数据包，握手结束</li>
-</ol>
-<p>###四次挥手<br>断开客户端与服务器之间的连接</p>
-<ol>
-<li>客户端向服务器发送一个带有FIN/ACK标志的报文，告诉服务器要关闭TCP连接</li>
-<li>服务器收到这个数据包之后，返回一个带有ACK标志的报文。</li>
-<li>服务器断开与客户端之间的连接，发送一个带有FIN/ACK标志的报文给客户端</li>
-<li>客户端返回一个带有ACK标志的报文，表示挥手结束</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 预编译 面向对象编程 遍历</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/HeatherIris/2018/05/07/同源策略/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/07/跨域方案/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          跨域方案
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/05/06/Ajax/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Ajax</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#同源策略"><span class="toc-number">1.</span> <span class="toc-text">同源策略    </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#同源"><span class="toc-number">1.1.</span> <span class="toc-text">同源</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -365,9 +229,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
