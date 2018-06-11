@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title>JavaScript（四） | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
+  <meta name="description" content="函数作用域和闭包">
+<meta name="keywords" content="JavaScript 作用域 闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript（四）">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/06/09/JavaScript（四）/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="函数作用域和闭包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-09T05:48:22.175Z">
+<meta property="og:updated_time" content="2018-06-11T01:13:51.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（四）">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:description" content="函数作用域和闭包">
   
     <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
   
@@ -174,7 +175,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="函数作用域和闭包"><a href="#函数作用域和闭包" class="headerlink" title="函数作用域和闭包"></a>函数作用域和闭包</h1><a id="more"></a>
+<h2 id="函数部分"><a href="#函数部分" class="headerlink" title="函数部分"></a>函数部分</h2><p>函数声明的两种方式：</p>
+<ol>
+<li><code>var demo = function () {}</code> 函数表达式</li>
+<li><code>function () {}</code> 函数声明<br>作用域</li>
+</ol>
+<hr>
+<p>作用域指的是变量和函数生效的部分，函数作用域就像一辆私家车，在车里可以看到车外的景色，车外看不见车里的内容。<br>声明变量没有用var，就声明了一个全局变量。<br>不同作用域之间不能互相访问</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>作用域之间自然产生嵌套关系，产生作用域链<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">demo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> demo_1 = <span class="number">1</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> demo_1 = <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(demo_1);</span><br><span class="line">    &#125;</span><br><span class="line">    test();</span><br><span class="line">&#125;</span><br><span class="line">demo();</span><br></pre></td></tr></table></figure></p>
+<p>在demo运行的时候首先创建了一个demo的作用域，但是window本身还有一个全局作用域，demo就产生了一个作用域链，为了对执行环境执行有权，有序的访问，函数自身作用域总在作用域链最顶层，下一层是这个函数父级作用域，下一层是····，直到全局结束。</p>
+<h1 id="闭包、作用域、内存"><a href="#闭包、作用域、内存" class="headerlink" title="闭包、作用域、内存"></a>闭包、作用域、内存</h1><h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>JavaScript最强大特性，它允许函数访问局部作用域之外的数据在频繁访问跨作用域标识符时。每次访问会都带来性能损失。闭包可以看做函数和外部链接起来的桥梁。<br>当函数可以记住并访问所在的词法作用域，即使函数在词法作用域之外执行，这时就产生了闭包。一个函数嵌套在另一函数内部，拜函数声明的位置所赐，它拥有涵盖外部内部作用域的闭包，使得该作用域能够一直存活以供内部函数在之后任意时间进行引用，这个引用就是闭包。<br>闭包可使函数继续访问定义时的词法作用域。不同作用域之间不能互相访问，但如果在一个函数内部再定义一个函数且内部函数与外部函数的变量有关联，就可以通过返回这个内部的函数来访问外部函数的变量。<br>函数在执行完上下文之后会被销毁，无法再访问里面的变量，我们让这个函数返回依赖于这个函数的新函数，由于新函数的作用域链中还存在这对原本函数作用域的引用，，原本函数上下文就不会被销毁，这个新函数被称为闭包函数。<br>闭包最日常的引用就是回调函数，执行外部作用域时才会创建作用域和闭包。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> demo = <span class="number">123</span>;</span><br><span class="line">    add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        demo ++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(demo1());</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> demo1 = a();</span><br><span class="line">demo1();     <span class="comment">//123</span></span><br><span class="line">add();</span><br><span class="line">demo1()      <span class="comment">//124</span></span><br></pre></td></tr></table></figure></p>
+<p>a内部有一个全局函数add，还有一个局部变量demo，讲一个返回函数给了一个全局变量demo1进入内存中，这个返回函数需要依附a函数，因此a函数上下文不会被销毁。<br>add的值是一个闭包，即当内部函数在定义它作用域的外部被引用时，就创建了该内部函数的闭包。<br>一些注意</p>
+<hr>
+<p>1.使用闭包内存消耗大<br>2.如果把父函数当做对象，把闭包当做它的公用方法，把内部函数当做它的私有属性，这时不要随便改变父函数的变量值。</p>
+<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><p>立即执行函数是解除闭包的一个重要方法：不许定义，直接执行，执行完毕后释放<br>闭包无法解除，只能通过拎一个新闭包消除上一个闭包的影响。<br>写法：<br><code>(function (a) ())(num)</code><br><code>(function (a) {} (num))</code><br>传递的参数是a，a的实参值是num。num是在外部被定义的变量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnA</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> save = returnA();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    save[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码最后会输出10个10。回调函数会在循环结束后再执行，所有函数共享一个i的引用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnB</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        (</span><br><span class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">                arr[n] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        )(i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> save = returnB();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    save[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -182,6 +199,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript 作用域 闭包</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -275,7 +303,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#函数作用域和闭包"><span class="toc-number">1.</span> <span class="toc-text">函数作用域和闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数部分"><span class="toc-number">1.1.</span> <span class="toc-text">函数部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-number">1.2.</span> <span class="toc-text">作用域链</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#闭包、作用域、内存"><span class="toc-number">2.</span> <span class="toc-text">闭包、作用域、内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包"><span class="toc-number">2.1.</span> <span class="toc-text">闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#立即执行函数"><span class="toc-number">2.2.</span> <span class="toc-text">立即执行函数</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -391,15 +419,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 作用域 闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
               </li>
             
             <div class="clearfix"></div>
