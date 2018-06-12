@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="继承机制由于JavaScript中不存在类，只有对象，JavaScript可以不通过类直接创建对象。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/HeatherIris/HeatherIris.github.io/blob/master/1.jpg"GitHub Mark"">
-<meta property="og:updated_time" content="2018-06-12T03:30:10.982Z">
+<meta property="og:image" content="https://github.com/HeatherIris/2018/06/05/JavaScript（三）/http://pa71f4g8m.bkt.clouddn.com/other1.jpg">
+<meta property="og:updated_time" content="2018-06-12T05:01:37.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（三）">
 <meta name="twitter:description" content="继承机制由于JavaScript中不存在类，只有对象，JavaScript可以不通过类直接创建对象。">
-<meta name="twitter:image" content="https://github.com/HeatherIris/HeatherIris.github.io/blob/master/1.jpg"GitHub Mark"">
+<meta name="twitter:image" content="https://github.com/HeatherIris/2018/06/05/JavaScript（三）/http://pa71f4g8m.bkt.clouddn.com/other1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
@@ -177,7 +177,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="继承机制"><a href="#继承机制" class="headerlink" title="继承机制"></a>继承机制</h1><p>由于JavaScript中不存在类，只有对象，JavaScript可以不通过类直接创建对象。<br><a id="more"></a><br>每个函数都会有一个prototype共有属性，它指向一个对象<br>new Foo()与Foo.prototype之间通过[[prototype]]相互关联，Object.create()创建了这种关联。这种关联机制被称为委托访问，[[prototype]]机制即原型继承。<br>在ES6之前，我们通过设置_proto_属性来实现修改对象的[[prototype]]关联。_proto_存在于内置Object.prototype中，[[prototype]]机制就是对象中存在的一个内部链接，它会引用其他对象，一系列对象的连接被称为原型链。<br>忘了从哪里找的图。。。<br><img src="https://github.com/HeatherIris/HeatherIris.github.io/blob/master/1.jpg&quot;GitHub Mark&quot;" alt="GitHub Mark"><br>每个函数都是function函数创建的对象，每个函数也有一个_proto_属性指向function对象的原型。<strong>真正形成原型链对象的是每个对象的_proto_属性而不是函数的prototype属性</strong></p>
+        <h1 id="继承机制"><a href="#继承机制" class="headerlink" title="继承机制"></a>继承机制</h1><p>由于JavaScript中不存在类，只有对象，JavaScript可以不通过类直接创建对象。<br><a id="more"></a><br>每个函数都会有一个prototype共有属性，它指向一个对象<br>new Foo()与Foo.prototype之间通过[[prototype]]相互关联，Object.create()创建了这种关联。这种关联机制被称为委托访问，[[prototype]]机制即原型继承。<br>在ES6之前，我们通过设置_proto_属性来实现修改对象的[[prototype]]关联。_proto_存在于内置Object.prototype中，[[prototype]]机制就是对象中存在的一个内部链接，它会引用其他对象，一系列对象的连接被称为原型链。<br>忘了从哪里找的图。。。<br><img src="https:http://pa71f4g8m.bkt.clouddn.com/other1.jpg" alt="GitHub Mark"><br>每个函数都是function函数创建的对象，每个函数也有一个_proto_属性指向function对象的原型。<strong>真正形成原型链对象的是每个对象的_proto_属性而不是函数的prototype属性</strong></p>
 <h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>原型是functin对象的一个属性，原型本身也是一种对象，它定义了构造函数制造出来的对象的公共祖先，通过该构造函数产生的对象可以继承该原型的属性和方法。<br>Person.prototype这个属性时构造函数<code>function Person(){}</code>的原型且这个属性的值也是一个对象，我们可以在prototype上添加属性和方法每一个构造出来的对象都可以继承这些属性和方法。<br>当我们访问一个对象属性的时候，如果它没有这个属性，就会向上找它的原型然后在原型上访问这个属性。</p>
 <h2 id="提取共有属性"><a href="#提取共有属性" class="headerlink" title="提取共有属性"></a>提取共有属性</h2><p>利用原型的概念，可以提取共有属性。把每个对象的公有属性不写在构造函数里面，而是提取到原型上，这样则不需要走多次构造函数的赋值语句，每一个对象调用属性直接上原型查找即可。</p>
 <h2 id="对象如何查看原型"><a href="#对象如何查看原型" class="headerlink" title="对象如何查看原型"></a>对象如何查看原型</h2><p>构造函数可以通过 _proto_ 的方法来查看构造函数原型。用构造函数构造对象的时候会隐式创建一个this对象，这个this对象里面会有一个默认的属性_proto_，这个属性的属性值就是指向这个对象的原型。</p>
@@ -267,11 +267,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/09/JavaScript（四）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/12/JavaScript（六）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript（四）
+          JavaScript（六）
         
       </div>
     </a>
@@ -417,11 +417,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -430,14 +430,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript this 圣杯模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 作用域 闭包</a>
               </li>
             
             <div class="clearfix"></div>
