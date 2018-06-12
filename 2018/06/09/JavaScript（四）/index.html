@@ -9,14 +9,14 @@
   <title>JavaScript（四） | 青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="函数作用域和闭包">
-<meta name="keywords" content="JavaScript 作用域 闭包">
+<meta name="keywords" content="JavaScript, 作用域, 闭包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript（四）">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/06/09/JavaScript（四）/index.html">
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="函数作用域和闭包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-11T01:13:51.773Z">
+<meta property="og:updated_time" content="2018-06-12T05:03:14.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（四）">
 <meta name="twitter:description" content="函数作用域和闭包">
@@ -190,7 +190,8 @@
 <hr>
 <p>1.使用闭包内存消耗大<br>2.如果把父函数当做对象，把闭包当做它的公用方法，把内部函数当做它的私有属性，这时不要随便改变父函数的变量值。</p>
 <h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><p>立即执行函数是解除闭包的一个重要方法：不许定义，直接执行，执行完毕后释放<br>闭包无法解除，只能通过拎一个新闭包消除上一个闭包的影响。<br>写法：<br><code>(function (a) ())(num)</code><br><code>(function (a) {} (num))</code><br>传递的参数是a，a的实参值是num。num是在外部被定义的变量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnA</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        arr[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> save = returnA();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    save[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这段代码最后会输出10个10。回调函数会在循环结束后再执行，所有函数共享一个i的引用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnB</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        (</span><br><span class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">                arr[n] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        )(i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> save = returnB();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    save[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码最后会输出10个10。回调函数会在循环结束后再执行，每次参与循环的10个函数都被都被封闭在一个共享的全局作用域中，相当于将函数的回调重复定义10次，所有函数共享一个i的引用，共用一个闭包。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnB</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        (</span><br><span class="line">            <span class="function"><span class="keyword">function</span> (<span class="params">n</span>) </span>&#123;</span><br><span class="line">                arr[n] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="built_in">console</span>.log(n);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        )(i)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> save = returnB();</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    save[i]();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据立即执行函数的特性，每次迭代都会产生一个新的作用域，使得函数的回调可以将新的作用域封闭在每个迭代内部，每个迭代都含有一个正确值的变量供我们访问。</p>
 
       
 
@@ -204,7 +205,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript 作用域 闭包</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript, 作用域, 闭包</a>
         		</li>
       		
 		</ul>
@@ -424,6 +425,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript, 原型, 原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -432,19 +437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript, 预编译, 面向对象编程, 遍历</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript, this, 圣杯模式</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript this 圣杯模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript 作用域 闭包</a>
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript, 作用域, 闭包</a>
               </li>
             
             <div class="clearfix"></div>
