@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
-  <title></title>
+  <title>青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="青は一番暖かい色">
 <meta property="og:type" content="website">
-<meta property="og:title">
+<meta property="og:title" content="青は一番暖かい色">
 <meta property="og:url" content="https://github.com/HeatherIris/index.html">
-<meta property="og:site_name">
+<meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="青は一番暖かい色">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title">
+<meta name="twitter:title" content="青は一番暖かい色">
 <meta name="twitter:description" content="青は一番暖かい色">
   
-    <link rel="alternative" href="/atom.xml" title="" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -155,6 +155,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JavaScript（六）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/12/JavaScript（六）/">JavaScript（六）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/12/JavaScript（六）/" class="archive-article-date">
+  	<time datetime="2018-06-12T02:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/12/JavaScript（六）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JavaScript（五）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,7 +237,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>写写有关继承的一些东西</p>
+<h2 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h2><p>this的默认指向是全局对象window，严格模式下绑定到undefined，谁调用它就指向谁。我们可以用call/apply来改变this指向。</p>
+<h3 id="call和apply的区别"><a href="#call和apply的区别" class="headerlink" title="call和apply的区别"></a>call和apply的区别</h3><p>后面传的参数形式不同，call后面的参数是一个一个传的，apply后面的参数是放进一个数组里然后传进去。</p>
+<h3 id="如何判断一个函数的this绑定"><a href="#如何判断一个函数的this绑定" class="headerlink" title="如何判断一个函数的this绑定"></a>如何判断一个函数的this绑定</h3><ol>
+<li>由new调用？绑定新创建的对象。</li>
+<li>由call或apply调用？绑定到指定的对象。</li>
+<li>由上下文对象调用？绑定到那个上下文对象。</li>
+<li>默认：严格模式下绑定到undefined，否则绑定到全局对象。<br>继承</li>
+</ol>
+<hr>
+<h3 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h3><p>传统继承即原型链式继承。缺点是会继承过多没用的属性。</p>
+<h3 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h3><p>借用构造函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    Foo.call(<span class="keyword">this</span>.name.age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son(<span class="string">'son'</span>, <span class="number">18</span>);</span><br><span class="line"><span class="built_in">console</span>.log(son.name);     <span class="comment">//son</span></span><br></pre></td></tr></table></figure></p>
+<p>这种方式无法访问函数的原型，因此严格来说不属于继承，而且每构造一个对象需要走两个构造函数，效率低。</p>
+<h3 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h3><p>共享原型<br><code>Son.prototype = Foo.prototype;</code>这种方式让父子构造函数的原型都一样，改善第二阶段的情况，但无法改变子类的原型。</p>
+<h3 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h3><p><font color="#770d0d" size="4">圣杯模式</font><br>不会继承过多没用的属性，可改变子类的原型。父子共享原型的基础上不用构造函数实现子类的更改。<br>圣杯模式是通过 已经存在的构造函数F构建一个实例对象P，然后我们定制一个构造函数C，让这个构造函数C的原型属性指向这个实例对象P（临时构造函数的实例对象），这样我们改变定制的构造函数C原型属性是的属性成员时候，其实改变的只不过是实例对象P中的属性成员<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inherit = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> Foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">C, P</span>) </span>&#123;</span><br><span class="line">        F.prototype = P.prototype;</span><br><span class="line">        C.prototype = <span class="keyword">new</span> F();</span><br><span class="line">        C.prototype.constructor = C;   <span class="comment">//记录子类构造函数</span></span><br><span class="line">        C.prototype.uber = P;   <span class="comment">//保存父类，用Uber来记录父类</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -183,6 +260,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this 圣杯模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -586,68 +674,6 @@
 
 
   
-    <article id="post-cookie、localStorage、sessionStarage的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/10/cookie、localStorage、sessionStarage的区别/">cookie、localStorage、sessionStarage的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/10/cookie、localStorage、sessionStarage的区别/" class="archive-article-date">
-  	<time datetime="2018-05-10T09:45:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/10/cookie、localStorage、sessionStarage的区别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -745,11 +771,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -758,6 +784,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JavaScript 预编译 面向对象编程 遍历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript this 圣杯模式</a>
               </li>
              
               <li class="article-tag-list-item">
