@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-13T04:15:32.916Z">
+<meta property="og:updated_time" content="2018-06-13T04:20:56.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（六）">
 <meta name="twitter:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
@@ -198,31 +198,30 @@
 <li>pop：在数组后删除一位数据，同时返回这个被删除的数据。</li>
 <li>shift：在数组最前面删除一位数据，同时返回这个被删除的数据。</li>
 <li>unshift：在数组最前面添加数据。</li>
-<li>splice：截取</li>
-</ol>
+<li><p>splice：截取</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr.splice(<span class="number">1</span>,<span class="number">2</span>,<span class="number">100</span>,<span class="number">188</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr);   <span class="comment">// [1, 100, 188, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>sort：快速排序   </li>
+</li>
+<li><p>sort：快速排序</p>
+</li>
 </ol>
 <h3 id="下面三种方法不会改变原数组"><a href="#下面三种方法不会改变原数组" class="headerlink" title="下面三种方法不会改变原数组"></a>下面三种方法不会改变原数组</h3><ol>
 <li>concat：连接数组</li>
-<li>join：选择连接方式</li>
-</ol>
+<li><p>join：选择连接方式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> str = arr.join(<span class="string">'-'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str)        <span class="comment">//a-b-c</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>split：把字符串以怎样的方式分割成数组  </li>
-</ol>
+</li>
+<li><p>split：把字符串以怎样的方式分割成数组</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="string">'a-d-f-g'</span>;</span><br><span class="line"><span class="keyword">var</span> str = arr.split(<span class="string">'-'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h2 id="ES5中的一些数组方法"><a href="#ES5中的一些数组方法" class="headerlink" title="ES5中的一些数组方法"></a>ES5中的一些数组方法</h2><ol>
-<li>forEach：让数组从头到尾遍历，每一个都调用forEach中的方法。</li>
-</ol>
+<li><p>forEach：让数组从头到尾遍历，每一个都调用forEach中的方法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">val, index, arr</span>) </span>&#123;</span><br><span class="line">    arr[index] = val + <span class="number">1</span>;   <span class="comment">//val为数组当前值</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr);           <span class="comment">// [2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>map：与forEach很像，不过不会返回原数组。</li>
-</ol>
+</li>
+<li><p>map：与forEach很像，不过不会返回原数组。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> test = arr.map(<span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x*x;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(test);      <span class="comment">//[1, 4, 9, 16]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);       <span class="comment">//[1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>filter：过滤<br>同样返回一个新数组滤掉不合格的元素<br>如果在回调函数中返回true，那么就留下来,返回false，就放弃<br>例如筛选出奇数位的数：</li>
+</li>
+<li><p>filter：过滤<br>同样返回一个新数组滤掉不合格的元素<br>如果在回调函数中返回true，那么就留下来,返回false，就放弃<br>例如筛选出奇数位的数：</p>
+</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>, <span class="number">20</span>, <span class="number">24</span>, <span class="number">66</span>, <span class="number">40</span>, <span class="number">49</span>, <span class="number">60</span>];</span><br><span class="line"><span class="keyword">var</span> test = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">value, index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> index % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(test); <span class="comment">//[5, 24, 40, 60]</span></span><br></pre></td></tr></table></figure>
 <ol start="4">
@@ -464,15 +463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
