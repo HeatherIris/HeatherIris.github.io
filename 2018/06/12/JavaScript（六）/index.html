@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-13T04:01:36.391Z">
+<meta property="og:updated_time" content="2018-06-13T04:04:54.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（六）">
 <meta name="twitter:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
@@ -190,11 +190,9 @@
 <h3 id="深层克隆"><a href="#深层克隆" class="headerlink" title="深层克隆"></a>深层克隆</h3><p>递归调用，自己调用自己<br>优点：可修改对象的引用值，同时克隆对象不受影响。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepClone</span>(<span class="params">src, tar</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> tar = tar || &#123;&#125;;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> src) &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">typeof</span> (src[prop]) == <span class="string">'object'</span>) &#123;</span><br><span class="line">					tar[prop] = (src[prop].constructor === <span class="built_in">Array</span>) ? [] : &#123;&#125;;  </span><br><span class="line">                    <span class="comment">//创建新源对象</span></span><br><span class="line">					deepCopy(src[prop], tar[prop]);</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					tar[prop] = src[prop];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> tar;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> parent = &#123;</span><br><span class="line">			name: <span class="string">'heather'</span>,</span><br><span class="line">			age: <span class="number">21</span>,</span><br><span class="line">			sex: <span class="string">'female'</span>,</span><br><span class="line">			height: <span class="number">160</span>,</span><br><span class="line">			money: [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">var</span> child = &#123;&#125;;</span><br><span class="line">		deepClone(parent, child);</span><br><span class="line">		<span class="built_in">console</span>.log(child.money);</span><br><span class="line">		parent.money.push(<span class="number">10</span>);</span><br><span class="line">		<span class="built_in">console</span>.log(child.name);</span><br></pre></td></tr></table></figure></p>
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组的声明："><a href="#数组的声明：" class="headerlink" title="数组的声明："></a>数组的声明：</h2><ol>
 <li><code>var arr[]</code></li>
-<li><code>var arr = new Array(1,2,3,4)</code><br>数组的常用方法</li>
+<li><code>var arr = new Array(1,2,3,4)</code>   </li>
 </ol>
-<hr>
-<p>##这七种方法会改变原数组##</p>
-<ol>
+<h2 id="数组的常用方法"><a href="#数组的常用方法" class="headerlink" title="数组的常用方法"></a>数组的常用方法</h2><h2 id="这七种方法会改变原数组"><a href="#这七种方法会改变原数组" class="headerlink" title="这七种方法会改变原数组"></a>这七种方法会改变原数组</h2><ol>
 <li>reverse：使数组倒叙</li>
 <li>push：在数组最后位置添加数据</li>
 <li>pop：在数组后删除一位数据，同时返回这个被删除的数据。</li>
@@ -349,7 +347,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#三种操作符"><span class="toc-number">1.</span> <span class="toc-text">三种操作符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#克隆与数组"><span class="toc-number"></span> <span class="toc-text">克隆与数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#两个属性"><span class="toc-number">1.</span> <span class="toc-text">两个属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浅层克隆"><span class="toc-number">1.1.</span> <span class="toc-text">浅层克隆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深层克隆"><span class="toc-number">1.2.</span> <span class="toc-text">深层克隆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组"><span class="toc-number"></span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的声明："><span class="toc-number">1.</span> <span class="toc-text">数组的声明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5中的一些数组方法"><span class="toc-number">2.</span> <span class="toc-text">ES5中的一些数组方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型的检测"><span class="toc-number">3.</span> <span class="toc-text">数据类型的检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组去重"><span class="toc-number">4.</span> <span class="toc-text">数组去重</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#三种操作符"><span class="toc-number">1.</span> <span class="toc-text">三种操作符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#克隆与数组"><span class="toc-number"></span> <span class="toc-text">克隆与数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#两个属性"><span class="toc-number">1.</span> <span class="toc-text">两个属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#浅层克隆"><span class="toc-number">1.1.</span> <span class="toc-text">浅层克隆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深层克隆"><span class="toc-number">1.2.</span> <span class="toc-text">深层克隆</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数组"><span class="toc-number"></span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的声明："><span class="toc-number">1.</span> <span class="toc-text">数组的声明：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的常用方法"><span class="toc-number">2.</span> <span class="toc-text">数组的常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这七种方法会改变原数组"><span class="toc-number">3.</span> <span class="toc-text">这七种方法会改变原数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES5中的一些数组方法"><span class="toc-number">4.</span> <span class="toc-text">ES5中的一些数组方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据类型的检测"><span class="toc-number">5.</span> <span class="toc-text">数据类型的检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组去重"><span class="toc-number">6.</span> <span class="toc-text">数组去重</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -461,6 +459,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -470,14 +476,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
