@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
-  <title>Tag: 数组 | 青は一番暖かい色</title>
+  <title>JavaScript（七） | 青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
-<meta property="og:type" content="website">
-<meta property="og:title" content="青は一番暖かい色">
-<meta property="og:url" content="https://github.com/HeatherIris/tags/数组/index.html">
+  <meta name="description" content="事件什么是事件把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。 如何绑定事件 ele.onXXX = function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在HTML行间上。 obj.addEventListe">
+<meta name="keywords" content="JavaScript,事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript（七）">
+<meta property="og:url" content="https://github.com/HeatherIris/2018/06/13/JavaScript（七）/index.html">
 <meta property="og:site_name" content="青は一番暖かい色">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="事件什么是事件把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。 如何绑定事件 ele.onXXX = function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在HTML行间上。 obj.addEventListe">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-16T10:07:54.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="青は一番暖かい色">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:title" content="JavaScript（七）">
+<meta name="twitter:description" content="事件什么是事件把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。 如何绑定事件 ele.onXXX = function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在HTML行间上。 obj.addEventListe">
   
     <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
@@ -153,68 +155,209 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript（七）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/12/JavaScript（六）/" class="archive-article-date">
-  	<time datetime="2018-06-12T02:57:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/12/JavaScript（六）/">JavaScript（六）</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript（七）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/13/JavaScript（七）/" class="archive-article-date">
+  	<time datetime="2018-06-13T04:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="什么是事件"><a href="#什么是事件" class="headerlink" title="什么是事件"></a>什么是事件</h2><p>把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。</p>
+<h2 id="如何绑定事件"><a href="#如何绑定事件" class="headerlink" title="如何绑定事件"></a>如何绑定事件</h2><ul>
+<li><code>ele.onXXX = function (event) {}</code><br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在HTML行间上。</li>
+<li><code>obj.addEventListener(type, fn, false)</code><br>IE9以下不兼容，可以为一个事件绑定多个处理程序。</li>
+<li><code>obj.attachEvent(&#39;on&#39; + type, fn);</code><br>IE独有，一个事件同样可以绑定多个处理程序，同一个函数也可以绑定多次。<br>事件处理模型</li>
+</ul>
+<hr>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>结构上嵌套关系的元素，会存在事件冒泡功能，即同一事件，自子元素冒泡向父元素（结构上自底向上）</p>
+<h3 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h3><p><code>obj.addEventListener(type, fn, false)</code><br>将false变为true则为事件捕获，结构上嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素。（结构上自顶而下）。<br>IE没有事件捕获模型<br>触发顺序：先捕获，再冒泡。   </p>
+<h2 id="取消冒泡和默认阻止事件"><a href="#取消冒泡和默认阻止事件" class="headerlink" title="取消冒泡和默认阻止事件"></a>取消冒泡和默认阻止事件</h2><h3 id="取消冒泡"><a href="#取消冒泡" class="headerlink" title="取消冒泡"></a>取消冒泡</h3><ul>
+<li>W3C标准event.stopPropagation();但不支持IE9以下版本。</li>
+<li>IE独有event.cancelBubble = true;</li>
+<li>封装取消冒泡的函数 stopBubble(event）  </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.stopPropagation) &#123;</span><br><span class="line">        event.stopPropagation();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件"></a>阻止默认事件</h3><ul>
+<li>默认事件：表单提交、a标签跳转、右键菜单等。</li>
+<li>1.return false：以对象属性的方式注册的事件才生效。</li>
+<li>2.event.preventDefault()：W3C标准，IE9以下不兼容。</li>
+<li>3.event.resultVelue = false; 兼容IE。</li>
+<li>封装阻止默认事件的函数cancelHander(event)。    </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">        event.prenentDefault();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p> 系统调用事件处理函数的时候会给你传一个事件对象。这个事件对象上存了很多关于事件的一些信息和方法供你使用，这个事件对象用形参如(e)来表示。</p>
+<p> <code>event||window.event(用于IE)</code></p>
+<h2 id="事件源对象"><a href="#事件源对象" class="headerlink" title="事件源对象"></a>事件源对象</h2><p>真实点击到的对象叫事件源对象。在事件对象上有一个属性target，这个属性记载了事件源对象。事件通过事件源对象触发，在DOM上执行。事件源对象记载了事件对象上最重要的信息。</p>
+<ul>
+<li><code>event.target</code>(火狐独有)</li>
+<li><code>event.srcElement</code>(IE独有)</li>
+<li>以上两种Chrome都有。        </li>
+<li>兼容性写法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡和事件源对象进行处理，通过事件冒泡冒到父级对象上，再处理子元素，由于 父级对象有且仅有一个，子集对象可有无限个，这样事件仅绑定一次，这种机制叫做事件委托机制。<br><strong>优点</strong></p>
+<ol>
+<li>性能高：不需要循环所有元素一个个绑定</li>
+<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">操作符</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">克隆</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">事件</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/HeatherIris/2018/06/13/JavaScript（七）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/06/16/JavaScript（七）-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript（七）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/06/12/JavaScript（六）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript（六）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事件"><span class="toc-number">1.</span> <span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是事件"><span class="toc-number">1.1.</span> <span class="toc-text">什么是事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何绑定事件"><span class="toc-number">1.2.</span> <span class="toc-text">如何绑定事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事件冒泡"><span class="toc-number">1.2.1.</span> <span class="toc-text">事件冒泡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件捕获"><span class="toc-number">1.2.2.</span> <span class="toc-text">事件捕获</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取消冒泡和默认阻止事件"><span class="toc-number">1.3.</span> <span class="toc-text">取消冒泡和默认阻止事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#取消冒泡"><span class="toc-number">1.3.1.</span> <span class="toc-text">取消冒泡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻止默认事件"><span class="toc-number">1.3.2.</span> <span class="toc-text">阻止默认事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件对象"><span class="toc-number">1.4.</span> <span class="toc-text">事件对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件源对象"><span class="toc-number">1.5.</span> <span class="toc-text">事件源对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件委托"><span class="toc-number">1.6.</span> <span class="toc-text">事件委托</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,9 +380,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
