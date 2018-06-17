@@ -155,20 +155,20 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JavaScript（七）-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-jQuery源码（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/16/JavaScript（七）-1/">JavaScript（七）</a>
+      <a class="article-title" href="/2018/06/17/jQuery源码（一）/">jQuery源码（一）</a>
     </h1>
   
 
         
-        <a href="/2018/06/16/JavaScript（七）-1/" class="archive-article-date">
-  	<time datetime="2018-06-16T10:08:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-16</time>
+        <a href="/2018/06/17/jQuery源码（一）/" class="archive-article-date">
+  	<time datetime="2018-06-17T02:40:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-17</time>
 </a>
         
       </header>
@@ -187,7 +187,94 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/16/JavaScript（七）-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/06/17/jQuery源码（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JavaScript（八）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/16/JavaScript（八）/">JavaScript（八）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/16/JavaScript（八）/" class="archive-article-date">
+  	<time datetime="2018-06-16T10:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="总结一下事件分类的一些知识点"><a href="#总结一下事件分类的一些知识点" class="headerlink" title="总结一下事件分类的一些知识点"></a>总结一下事件分类的一些知识点</h2><ul>
+<li>click=mousedown+mouseup</li>
+<li>用button来区分鼠标的按键，0/1/2</li>
+<li>DOM3标准规定：click事件只能监听鼠标左键，只能通过mousedown和mouseup来判断鼠标键<br>如何解决click和mousedown的冲突呢</li>
+</ul>
+<hr>
+<p>我们可以检测鼠标按下和抬起的时间间隔，如果时间间隔小于200毫秒则为click</p>
+<h2 id="拖拽的一个小demo"><a href="#拖拽的一个小demo" class="headerlink" title="拖拽的一个小demo"></a>拖拽的一个小demo</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>; <span class="comment">/* 必须写 */</span></span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span> (<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> disX,</span><br><span class="line">        disY;</span><br><span class="line">    addEvent(elem, <span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        disX = event.clientX - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'left'</span>));</span><br><span class="line">        disY = event.clientY - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'top'</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(disX+ <span class="string">"  "</span> + disY);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseMove</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        elem.style.left = event.clientX - disX + <span class="string">"px"</span>;</span><br><span class="line">        elem.style.top = event.clientY - disY + <span class="string">"px"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseUp</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, <span class="built_in">arguments</span>.callee); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">drag(div);</span><br></pre></td></tr></table></figure>
+<p>利用冒泡把事件绑定在document上，使得div可以一直受鼠标的控制，让方块可以跟上鼠标的位置。</p>
+<h2 id="关于固定位置的一个demo"><a href="#关于固定位置的一个demo" class="headerlink" title="关于固定位置的一个demo"></a>关于固定位置的一个demo</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span>*100</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixed</span> (<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'left'</span>)),</span><br><span class="line">        y = <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'top'</span>));</span><br><span class="line">    <span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        elem.style.left = getScrollOffset().x + x + <span class="string">'px'</span>;</span><br><span class="line">        elem.style.top = getScrollOffset().y +y + <span class="string">'px'</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(getScrollOffset().y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fixed(div);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript 事件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/16/JavaScript（八）/">展开全文 >></a>
         </p>
       
 
@@ -273,7 +360,8 @@
 <h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡和事件源对象进行处理，通过事件冒泡冒到父级对象上，再处理子元素，由于 父级对象有且仅有一个，子集对象可有无限个，这样事件仅绑定一次，这种机制叫做事件委托机制。<br><strong>优点</strong></p>
 <ol>
 <li>性能高：不需要循环所有元素一个个绑定</li>
-<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
+<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -671,85 +759,6 @@
 
 
   
-    <article id="post-JavaScript（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/10/JavaScript（一）/">JavaScript（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/10/JavaScript（一）/" class="archive-article-date">
-  	<time datetime="2018-05-10T09:55:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JavaScript简介"><a href="#JavaScript简介" class="headerlink" title="JavaScript简介"></a>JavaScript简介</h1><ul>
-<li>开发mosaic的团队开发了Netscape navigator，是很多浏览器的前身</li>
-<li>JavaScript原名livescript，后与sun公司合作，sun公司的Java很出名，改名为JavaScript</li>
-<li>浏览器的组成分为了1.渲染引擎2.js引擎
-        
-          <a class="article-more-a" href="/2018/05/10/JavaScript（一）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/10/JavaScript（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -863,18 +872,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">this,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原型</a>
               </li>
              
@@ -883,11 +880,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">作用域,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,6 +893,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">this,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">作用域,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
             
             <div class="clearfix"></div>

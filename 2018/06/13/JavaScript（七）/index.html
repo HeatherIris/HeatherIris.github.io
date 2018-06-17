@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="事件什么是事件把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。 如何绑定事件 ele.onXXX = function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在HTML行间上。 obj.addEventListe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-16T10:07:54.244Z">
+<meta property="og:updated_time" content="2018-06-16T13:18:21.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（七）">
 <meta name="twitter:description" content="事件什么是事件把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。 如何绑定事件 ele.onXXX = function (event) {}兼容性很好，但是一个元素只能绑定一个处理程序基本等同于写在HTML行间上。 obj.addEventListe">
@@ -211,7 +211,8 @@
 <h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡和事件源对象进行处理，通过事件冒泡冒到父级对象上，再处理子元素，由于 父级对象有且仅有一个，子集对象可有无限个，这样事件仅绑定一次，这种机制叫做事件委托机制。<br><strong>优点</strong></p>
 <ol>
 <li>性能高：不需要循环所有元素一个个绑定</li>
-<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></li>
+<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -300,11 +301,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/16/JavaScript（七）-1/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/16/JavaScript（八）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          JavaScript（七）
+          JavaScript（八）
         
       </div>
     </a>
@@ -466,18 +467,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaScript,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">this,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原型</a>
               </li>
              
@@ -486,11 +475,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">作用域,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript 事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,6 +488,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaScript,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">this,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">作用域,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
             
             <div class="clearfix"></div>
