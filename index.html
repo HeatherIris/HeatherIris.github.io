@@ -379,46 +379,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><h2 id="什么是事件"><a href="#什么是事件" class="headerlink" title="什么是事件"></a>什么是事件</h2><p>把前端的东西从静态划分到动态的过程，即用户的交互行为所触发的动作，我们通过这个动作绑定一个处理函数，这个过程叫做事件。事件拥有不同类型，事件不是人为安排而是元素本身具有的。事件是交互体验的核心功能。</p>
-<h2 id="如何绑定事件"><a href="#如何绑定事件" class="headerlink" title="如何绑定事件"></a>如何绑定事件</h2><ul>
-<li><code>ele.onXXX = function (event) {}</code><br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在HTML行间上。</li>
-<li><code>obj.addEventListener(type, fn, false)</code><br>IE9以下不兼容，可以为一个事件绑定多个处理程序。</li>
-<li><code>obj.attachEvent(&#39;on&#39; + type, fn);</code><br>IE独有，一个事件同样可以绑定多个处理程序，同一个函数也可以绑定多次。<br>事件处理模型</li>
-</ul>
-<hr>
-<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>结构上嵌套关系的元素，会存在事件冒泡功能，即同一事件，自子元素冒泡向父元素（结构上自底向上）</p>
-<h3 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h3><p><code>obj.addEventListener(type, fn, false)</code><br>将false变为true则为事件捕获，结构上嵌套关系的元素，会存在事件捕获的功能，即同一事件，自父元素捕获至子元素。（结构上自顶而下）。<br>IE没有事件捕获模型<br>触发顺序：先捕获，再冒泡。   </p>
-<h2 id="取消冒泡和默认阻止事件"><a href="#取消冒泡和默认阻止事件" class="headerlink" title="取消冒泡和默认阻止事件"></a>取消冒泡和默认阻止事件</h2><h3 id="取消冒泡"><a href="#取消冒泡" class="headerlink" title="取消冒泡"></a>取消冒泡</h3><ul>
-<li>W3C标准event.stopPropagation();但不支持IE9以下版本。</li>
-<li>IE独有event.cancelBubble = true;</li>
-<li>封装取消冒泡的函数 stopBubble(event）  </li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.stopPropagation) &#123;</span><br><span class="line">        event.stopPropagation();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="阻止默认事件"><a href="#阻止默认事件" class="headerlink" title="阻止默认事件"></a>阻止默认事件</h3><ul>
-<li>默认事件：表单提交、a标签跳转、右键菜单等。</li>
-<li>1.return false：以对象属性的方式注册的事件才生效。</li>
-<li>2.event.preventDefault()：W3C标准，IE9以下不兼容。</li>
-<li>3.event.resultVelue = false; 兼容IE。</li>
-<li>封装阻止默认事件的函数cancelHander(event)。    </li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">        event.prenentDefault();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p> 系统调用事件处理函数的时候会给你传一个事件对象。这个事件对象上存了很多关于事件的一些信息和方法供你使用，这个事件对象用形参如(e)来表示。</p>
-<p> <code>event||window.event(用于IE)</code></p>
-<h2 id="事件源对象"><a href="#事件源对象" class="headerlink" title="事件源对象"></a>事件源对象</h2><p>真实点击到的对象叫事件源对象。在事件对象上有一个属性target，这个属性记载了事件源对象。事件通过事件源对象触发，在DOM上执行。事件源对象记载了事件对象上最重要的信息。</p>
-<ul>
-<li><code>event.target</code>(火狐独有)</li>
-<li><code>event.srcElement</code>(IE独有)</li>
-<li>以上两种Chrome都有。        </li>
-<li>兼容性写法：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>利用事件冒泡和事件源对象进行处理，通过事件冒泡冒到父级对象上，再处理子元素，由于 父级对象有且仅有一个，子集对象可有无限个，这样事件仅绑定一次，这种机制叫做事件委托机制。<br><strong>优点</strong></p>
-<ol>
-<li>性能高：不需要循环所有元素一个个绑定</li>
-<li>灵活：可动态添加子元素，不需要重新绑定事件<br>事件委托：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> event = e||<span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = event.target || event.srcElement;</span><br><span class="line">    <span class="built_in">console</span>.log(target.innerHTML);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+        <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1>
+        
+          <a class="article-more-a" href="/2018/06/13/JavaScript（七）/#more">more >></a>
+        
       
 
       
@@ -859,6 +823,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">操作符</a>
               </li>
              
@@ -868,14 +840,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
             
             <div class="clearfix"></div>
