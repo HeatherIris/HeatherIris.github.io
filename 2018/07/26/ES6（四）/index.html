@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title>ES6（四） | 青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
+  <meta name="description" content="迭代器和生成器用循环语句迭代数据时，必须要初始化一个变量来记录一次迭代在数据集合中位置。迭代器的使用可以极大的简化数据操作。 迭代器迭代器是一种特殊的对象，它具有一些专门为迭代过程设计的专有接口，所有迭代器都有一个next()方法，每次调用都会返回一个结果对象。结果对象有两个属性：1. value表示下一个将要返回的值，2. done是一个布尔类型的值，当没有更多可返回数据时返回true。1234">
+<meta name="keywords" content="JavaScript,ES6,迭代器、生成器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6（四）">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/07/26/ES6（四）/index.html">
 <meta property="og:site_name" content="青は一番暖かい色">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="迭代器和生成器用循环语句迭代数据时，必须要初始化一个变量来记录一次迭代在数据集合中位置。迭代器的使用可以极大的简化数据操作。 迭代器迭代器是一种特殊的对象，它具有一些专门为迭代过程设计的专有接口，所有迭代器都有一个next()方法，每次调用都会返回一个结果对象。结果对象有两个属性：1. value表示下一个将要返回的值，2. done是一个布尔类型的值，当没有更多可返回数据时返回true。1234">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-26T00:31:54.208Z">
+<meta property="og:updated_time" content="2018-07-26T23:21:14.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6（四）">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:description" content="迭代器和生成器用循环语句迭代数据时，必须要初始化一个变量来记录一次迭代在数据集合中位置。迭代器的使用可以极大的简化数据操作。 迭代器迭代器是一种特殊的对象，它具有一些专门为迭代过程设计的专有接口，所有迭代器都有一个next()方法，每次调用都会返回一个结果对象。结果对象有两个属性：1. value表示下一个将要返回的值，2. done是一个布尔类型的值，当没有更多可返回数据时返回true。1234">
   
     <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
@@ -174,7 +175,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h1><p>用循环语句迭代数据时，必须要初始化一个变量来记录一次迭代在数据集合中位置。迭代器的使用可以极大的简化数据操作。</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种特殊的对象，它具有一些专门为迭代过程设计的专有接口，所有迭代器都有一个<code>next()</code>方法，每次调用都会返回一个结果对象。结果对象有两个属性：1. value表示下一个将要返回的值，2. done是一个布尔类型的值，当没有更多可返回数据时返回true。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createIterator</span> (<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> done = (i &gt;= items.length);</span><br><span class="line">            <span class="keyword">var</span> value = !done ? items[i++] : <span class="literal">undefined</span></span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                done: done;</span><br><span class="line">                value: value;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 1&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 3&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: true, value: undefined&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next())      <span class="comment">//&#123;done: true, value: undefined&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>以上这段代码中，createIterator()方法返回对象有一个next()方法，每次调用时，items数组的下一个值会作为value返回</p>
+<h2 id="生成器（不能用箭头函数来创建生成器）"><a href="#生成器（不能用箭头函数来创建生成器）" class="headerlink" title="生成器（不能用箭头函数来创建生成器）"></a>生成器（不能用箭头函数来创建生成器）</h2><p>生成器是一种返回迭代器的函数，通过function关键字后的<em>来表示，函数中会用到新的关键字yield。 </em>可以紧挨着function关键字，也可以在中间添加一个空格<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">createIterator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//生成器的调用方式和普通函数相同，只不过返回的是一个迭代器</span></span><br><span class="line"><span class="keyword">let</span> iterator = createIterator();</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().value);  <span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<p>在这个实例中，createIterator()前的*表示它是一个生成器；yield关键字也是ECMAScript6的新特性。可以用过它来调用迭代器的next()方法时的返回值及返回顺序。生成迭代器后，连续3次调用他的next()方法返回3个不同的值。<br>生成器函数每当执行完一条yield语句后函数就会自动停止执行，使用yield关键字可以返回任何值或表达式。所以可以通过生成器函数批量给迭代器添加元素<br>yield只能在生成器内部使用，在其他地方会导致程序抛出语法错误。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">createIterator</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> items[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());</span><br></pre></td></tr></table></figure></p>
+<p>生成器函数表达式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> createIterator = <span class="function"><span class="keyword">function</span> *(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> items[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure></p>
+<p>生成器对象的方法：由于生成器本身就是函数，因而可以将他们添加到对象中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="number">0</span> = &#123;</span><br><span class="line">    createIterator: <span class="function"><span class="keyword">function</span> *(<span class="params">items</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">            <span class="keyword">yield</span> items[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> iterator = o.createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>ECMAScript6函数方法简写方式如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="number">0</span> = &#123;</span><br><span class="line">    *createIterator(items) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">            <span class="keyword">yield</span> items[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> iterator = o.createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>可迭代循环的for-of循环<br>可迭代对象具有Symbol.iterator属性，是一种与迭代器密切相关的对象。Symbol.iterator通过指定的函数可以返回一个作用于附属对象的迭代器。</p>
+<pre><code class="js"><span class="keyword">let</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> values) {
+    <span class="built_in">console</span>.log(num); 
+}
+<span class="number">1</span>
+<span class="number">2</span>
+<span class="number">3</span>
+</code></pre>
+<p>一般来说数组和set集合的默认迭代器是values()方法，map集合的默认迭代器是entries()方法。</p>
+<p>借助生成委托器这个新特性，便可重用已有生成器创建新的生成器，从而进一步封装更复杂的迭代器行为    </p>
+<p>在生成器和迭代器的所有应用场景中，最有趣的是用来创建更简洁的异步代码。</p>
+
       
 
       
@@ -182,6 +203,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">迭代器、生成器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -246,6 +286,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/07/26/ES6（五）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          ES6（五）
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/07/25/ES6（三）/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">ES6（三）</div>
@@ -275,7 +324,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迭代器和生成器"><span class="toc-number">1.</span> <span class="toc-text">迭代器和生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代器"><span class="toc-number">1.1.</span> <span class="toc-text">迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成器（不能用箭头函数来创建生成器）"><span class="toc-number">1.2.</span> <span class="toc-text">生成器（不能用箭头函数来创建生成器）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -408,6 +457,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
               </li>
              
               <li class="article-tag-list-item">

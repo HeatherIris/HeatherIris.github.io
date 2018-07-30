@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-22T09:39:34.443Z">
+<meta property="og:updated_time" content="2018-07-27T08:43:14.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（六）">
 <meta name="twitter:description" content="三种操作符 hasOwnProperty：查看当前属性是否是对象的自身属性。 in：查看一个属性是不是在这个对象或是它的原型里。 instanceOf：查看前面的对象是不是后面构造函数构造出来的。相当于constructor">
@@ -228,6 +228,13 @@
 <li>some：逻辑判定<br>这个方法返回布尔值<br>只要有至少一个满足条件就返回true，否则返回false。</li>
 <li>every：逻辑判定<br>必须全部满足条件才会返回true。</li>
 <li>reduce：接收一个函数作为累加器，将数组进行合并，合并为一个值。<h2 id="数据类型的检测"><a href="#数据类型的检测" class="headerlink" title="数据类型的检测"></a>数据类型的检测</h2>在ES5中，我们有一个isArray()的方法来检查是否是数组<br>最可靠的检测数组的方法：<br><code>object.prototype.toString.call(arr) === &#39;[object Array]&#39;</code></li>
+<li>sort：升序排序。</li>
+<li>splice：进行删除，插入。</li>
+<li>concat：两数组之间的拼接。</li>
+<li>push：在数组最后添加元素。</li>
+<li>shift：在数组前添加任意项。</li>
+<li>unshift：相当于push。</li>
+<li>pop：取得最后项。</li>
 </ol>
 <h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><p>运用一个简单的哈希结构。当数组中的这个数据出现过一次之后，我们将在obj中将这个元素的值的位置标记成1，如果后面出现相同属性值，则对象中这个位置已经是1，不会添加至新数组中。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.unique = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = <span class="keyword">this</span>.length,</span><br><span class="line">    arr = [],</span><br><span class="line">    obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!obj[<span class="keyword">this</span>[i]]) &#123;</span><br><span class="line">            obj[<span class="keyword">this</span>[i]] = <span class="number">1</span>;</span><br><span class="line">            arr.push(<span class="keyword">this</span>[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.unique());   <span class="comment">//[1, 3, 5, 6, 7, 4]</span></span><br></pre></td></tr></table></figure>
@@ -485,6 +492,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -155,6 +155,258 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ES6（七）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/ES6（七）/">ES6（七）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/ES6（七）/" class="archive-article-date">
+  	<time datetime="2018-07-30T10:03:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/ES6（七）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ES6（六）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/ES6（六）/">ES6（六）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/ES6（六）/" class="archive-article-date">
+  	<time datetime="2018-07-30T09:47:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="改进数组功能"><a href="#改进数组功能" class="headerlink" title="改进数组功能"></a>改进数组功能</h1><h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><p>Array.of()方法，用Array.of()方法创建数组，只需要传入你希望在数组中包含的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> items = <span class="built_in">Array</span>.of(<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(items.length);  <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(items[<span class="number">0</span>]);      <span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>Array.from()方法<br>JavaScript不支持直接将非数组对象转换为真实数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.from(<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>用Array.from()转换可迭代对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = &#123;</span><br><span class="line">    *[<span class="built_in">Symbol</span>.iterator]() &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> numbers1 = <span class="built_in">Array</span>.from(numbers, (value) =&gt; value + <span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(numbers1);  <span class="comment">// [2,3,4]</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="为所有数组添加新的方法。"><a href="#为所有数组添加新的方法。" class="headerlink" title="为所有数组添加新的方法。"></a>为所有数组添加新的方法。</h2><p>find()方法和findIndex()方法，解决在数组内查找多个值的问题。find()方法和findIndex()方法都接受两个参数：一个是回调函数；另一个是可选参数，用于指定回调函数中this的值。执行回调函数时，传入的参数分别为：数组中的某个元素和该元素在数组中的索引及数组本身。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = [<span class="number">25</span>, <span class="number">30</span>, <span class="number">35</span>, <span class="number">40</span>, <span class="number">45</span>];</span><br><span class="line"><span class="built_in">console</span>.log(numbers.find(<span class="function"><span class="params">n</span> =&gt;</span> n &gt;<span class="number">33</span>));   <span class="comment">//35</span></span><br><span class="line"><span class="built_in">console</span>.log(numbers.findIndex(<span class="function"><span class="params">n</span> =&gt;</span> n &gt;<span class="number">33</span>));<span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>fill()方法：可以用指定的值填充一至多个数组元素。当传入一个值时，fill()方法会用这个值重写数组中的所有值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</span><br><span class="line">number.fill(<span class="number">1</span>, <span class="number">2</span>);<span class="comment">//从索引2开始填充值，值为1</span></span><br><span class="line"><span class="built_in">console</span>.log(number.tostring()); <span class="comment">//1,2,1,1</span></span><br><span class="line">number.fill(<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>);<span class="comment">//从索引1开始填充，到3停止，填充0</span></span><br><span class="line"><span class="built_in">console</span>.log(number.tostring());<span class="comment">//1,0,0,1</span></span><br></pre></td></tr></table></figure></p>
+<p>copyWithin()方法：与fill()方法相似，可以同时改变数组中的多个元素。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line">numbers.copyWithin(<span class="number">2</span>, <span class="number">0</span>);<span class="comment">//从索引2开始粘贴值，从索引0开始复制值。</span></span><br><span class="line"><span class="built_in">console</span>.log(numbers.toString());<span class="comment">//1,2,1,2</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/ES6（六）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ES6（五）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/26/ES6（五）/">ES6（五）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/26/ES6（五）/" class="archive-article-date">
+  	<time datetime="2018-07-26T06:57:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript中的类"><a href="#JavaScript中的类" class="headerlink" title="JavaScript中的类"></a>JavaScript中的类</h1><p>ECMAScripet6有一种与其他语言中类似的类特性：类声明。<br>基本的类声明语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PersonClass</span> </span>&#123;</span><br><span class="line">    <span class="comment">//等价于PersonType构造函数</span></span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//等价于PersonType.prototype.sayName</span></span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);<span class="comment">//heather</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> PersonClass(<span class="string">"heather"</span>);</span><br><span class="line">person.sayName();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> PersonClass);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> PersonClass);<span class="comment">//function</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> PersonClass.prototype.sayName);<span class="comment">//function</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="类与自定义类型的差异："><a href="#类与自定义类型的差异：" class="headerlink" title="类与自定义类型的差异："></a>类与自定义类型的差异：</h2><ul>
+<li>函数声明可以被提升，类声明与let声明类似，不能被提升</li>
+<li>类声明中的所有代码将自动运行在<em>严格模式</em>下，而且无法强行让代码脱离严格模式执行。</li>
+<li>在类中，所有方法都是不可枚举的</li>
+<li>通过关键字调用那些不含[[Construct]]的方法会导致程序抛出错误。</li>
+<li>使用除关键字new以外的方式调用类的构造函数会导致程序抛出错误。</li>
+<li>在类中修改类名会导致程序报错。</li>
+</ul>
+<h2 id="类表达式语法"><a href="#类表达式语法" class="headerlink" title="类表达式语法"></a>类表达式语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> PersonClass = <span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> PersonClass(<span class="string">"heather"</span>);</span><br><span class="line"></span><br><span class="line">person.sayName()</span><br></pre></td></tr></table></figure>
+<h2 id="作为一等公民"><a href="#作为一等公民" class="headerlink" title="作为一等公民"></a>作为一等公民</h2><p>ES6将类设为了一等公民，可以传入函数，可以从函数返回，并且可以复制给变量的值</p>
+<h1 id="类的一些属性和方法"><a href="#类的一些属性和方法" class="headerlink" title="类的一些属性和方法"></a>类的一些属性和方法</h1><h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>这段代码中的CunstomHTMLElement类是一个针对现有DOM元素的包装器，并通过getter和setter方法将这个元素的innerHTML方法委托给HTML属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CunstomHTMLElement</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(element) &#123;</span><br><span class="line">        <span class="keyword">this</span>.element = element;</span><br><span class="line">    &#125;</span><br><span class="line">    get html() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.element.innrHTML;</span><br><span class="line">    &#125;</span><br><span class="line">    set html(value) &#123;</span><br><span class="line">        <span class="keyword">this</span>.element.innerHTML = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="生成器方法"><a href="#生成器方法" class="headerlink" title="生成器方法"></a>生成器方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    *createIterator() &#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> instance = <span class="keyword">new</span> Myclass();</span><br><span class="line"><span class="keyword">let</span> iterator = instance.createIterator();</span><br></pre></td></tr></table></figure>
+<p>这段代码创建了一个名为MyClass的类，它有一个生成器方法createIterator(),其返回值是一个迭代器。</p>
+<h2 id="继承与派生类"><a href="#继承与派生类" class="headerlink" title="继承与派生类"></a>继承与派生类</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params">length, width</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.length = length;</span><br><span class="line">    <span class="keyword">this</span>.width = width;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Rectangle.prototype.getArea = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.length * <span class="keyword">this</span>.width;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Square</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">    Rectangle.call(<span class="keyword">this</span>, length, length);</span><br><span class="line">&#125;</span><br><span class="line">Square.prototype = <span class="built_in">Object</span>.create(Rectangle.prototype, &#123;</span><br><span class="line">    <span class="keyword">constructor</span>: &#123;</span><br><span class="line">        value: Square,</span><br><span class="line">        enumerable: <span class="literal">true</span>,</span><br><span class="line">        writable: <span class="literal">true</span>,</span><br><span class="line">        configurable: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> Square = <span class="keyword">new</span> Square(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(Square.getArea());</span><br><span class="line"><span class="string">``</span><span class="string">`             </span></span><br><span class="line"><span class="string">在ES6之前，我们用这样的方式实现继承与自定义，Square继承自Rectangle，为了这么做，必须用一个创建自Rectangle.prototype的新对象重写Square.prototype并调用Rectangle.call()方法。</span></span><br><span class="line"><span class="string">类的出现让我们可以更轻松的实现继承功能。使用`</span>extends<span class="string">`关键字可以指定类继承的函数。原型会自动调整，通过调用`</span><span class="keyword">super</span>()<span class="string">`方法即可访问基类的构造函数,在Square构造函数中通过super()调用Rectangle构造函数并传入相应的参数。</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length, width) &#123;</span><br><span class="line">        <span class="keyword">this</span>.length = length;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">    getArea() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.length * <span class="keyword">this</span>.width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length) &#123;</span><br><span class="line">        <span class="keyword">super</span>(length, length);</span><br><span class="line">            等价于Rectangle.call(<span class="keyword">this</span>, length, length);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> square = <span class="keyword">new</span> Square(<span class="number">3</span>)</span><br><span class="line"><span class="built_in">console</span>.log(square.getArea());</span><br></pre></td></tr></table></figure>
+<h2 id="关于super："><a href="#关于super：" class="headerlink" title="关于super："></a>关于super：</h2><ul>
+<li>只能在派生类的构造函数中使用super()</li>
+<li>在构造函数访问this前一定要先调用super()，它负责初始化this。</li>
+<li>如果不想调用super()，则唯一的方法是让类的构造函数返回一个对象<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length, width) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span>.target === Rectangle);</span><br><span class="line">        <span class="keyword">this</span>.length = length;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length) &#123;</span><br><span class="line">        <span class="keyword">super</span>(length, length)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Rectangle(<span class="number">8</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">new</span>.taret === Shape) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"zhegelei"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在类的构造中通过new.target来确定类是如何被调用的，简单情况写new.target相当于类的构造函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> (length, width) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span>.target === Rectangle);</span><br><span class="line">        <span class="keyword">this</span>.length = length;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Rectangle(<span class="number">3</span>,<span class="number">4</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">类</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/26/ES6（五）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ES6（四）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,7 +427,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h1><p>用循环语句迭代数据时，必须要初始化一个变量来记录一次迭代在数据集合中位置。迭代器的使用可以极大的简化数据操作。</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>迭代器是一种特殊的对象，它具有一些专门为迭代过程设计的专有接口，所有迭代器都有一个<code>next()</code>方法，每次调用都会返回一个结果对象。结果对象有两个属性：1. value表示下一个将要返回的值，2. done是一个布尔类型的值，当没有更多可返回数据时返回true。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createIterator</span> (<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        next: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> done = (i &gt;= items.length);</span><br><span class="line">            <span class="keyword">var</span> value = !done ? items[i++] : <span class="literal">undefined</span></span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                done: done;</span><br><span class="line">                value: value;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 1&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 2&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: false, value: 3&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());     <span class="comment">//&#123;done: true, value: undefined&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(iterator.next())      <span class="comment">//&#123;done: true, value: undefined&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>以上这段代码中，createIterator()方法返回对象有一个next()方法，每次调用时，items数组的下一个值会作为value返回</p>
+<h2 id="生成器（不能用箭头函数来创建生成器）"><a href="#生成器（不能用箭头函数来创建生成器）" class="headerlink" title="生成器（不能用箭头函数来创建生成器）"></a>生成器（不能用箭头函数来创建生成器）</h2><p>生成器是一种返回迭代器的函数，通过function关键字后的<em>来表示，函数中会用到新的关键字yield。 </em>可以紧挨着function关键字，也可以在中间添加一个空格<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">createIterator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//生成器的调用方式和普通函数相同，只不过返回的是一个迭代器</span></span><br><span class="line"><span class="keyword">let</span> iterator = createIterator();</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next().value);  <span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<p>在这个实例中，createIterator()前的*表示它是一个生成器；yield关键字也是ECMAScript6的新特性。可以用过它来调用迭代器的next()方法时的返回值及返回顺序。生成迭代器后，连续3次调用他的next()方法返回3个不同的值。<br>生成器函数每当执行完一条yield语句后函数就会自动停止执行，使用yield关键字可以返回任何值或表达式。所以可以通过生成器函数批量给迭代器添加元素<br>yield只能在生成器内部使用，在其他地方会导致程序抛出语法错误。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">createIterator</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> items[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(iterator.next());</span><br></pre></td></tr></table></figure></p>
+<p>生成器函数表达式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> createIterator = <span class="function"><span class="keyword">function</span> *(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">        <span class="keyword">yield</span> items[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> iterator = createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure></p>
+<p>生成器对象的方法：由于生成器本身就是函数，因而可以将他们添加到对象中。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="number">0</span> = &#123;</span><br><span class="line">    createIterator: <span class="function"><span class="keyword">function</span> *(<span class="params">items</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">            <span class="keyword">yield</span> items[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> iterator = o.createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>ECMAScript6函数方法简写方式如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="number">0</span> = &#123;</span><br><span class="line">    *createIterator(items) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; items.length; i++) &#123;</span><br><span class="line">            <span class="keyword">yield</span> items[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> iterator = o.createIterator([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br></pre></td></tr></table></figure></p>
+<p>可迭代循环的for-of循环<br>可迭代对象具有Symbol.iterator属性，是一种与迭代器密切相关的对象。Symbol.iterator通过指定的函数可以返回一个作用于附属对象的迭代器。</p>
+<pre><code class="js"><span class="keyword">let</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];
+<span class="keyword">for</span> (<span class="keyword">let</span> num <span class="keyword">of</span> values) {
+    <span class="built_in">console</span>.log(num); 
+}
+<span class="number">1</span>
+<span class="number">2</span>
+<span class="number">3</span>
+</code></pre>
+<p>一般来说数组和set集合的默认迭代器是values()方法，map集合的默认迭代器是entries()方法。</p>
+<p>借助生成委托器这个新特性，便可重用已有生成器创建新的生成器，从而进一步封装更复杂的迭代器行为    </p>
+<p>在生成器和迭代器的所有应用场景中，最有趣的是用来创建更简洁的异步代码。</p>
+
       
 
       
@@ -183,6 +455,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">迭代器、生成器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -237,14 +528,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="set集合与map集合"><a href="#set集合与map集合" class="headerlink" title="set集合与map集合"></a>set集合与map集合</h1><p>长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。<br>es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。<br>let set = new Set();<br>set.add(5);<br>set.add(“5”);<br>console.log(set.has(5));<br>console.log(set.has(9))     //has方法可以检测set集合中是否存在某个值</p>
-<p>let set = new Set();<br>set.add(5);<br>set.add(“5”);<br>console.log(set.has(5));</p>
-<p>set.delete(5);       //删除某个元素<br>console.log(set.has(5));</p>
-<p>set.clear();         //删除所有元素<br>console.log(set.has(“5”));<br>console.log(set.size);</p>
-<p>forEach用于在set集合上添加元素并在每个元素上执行操作<br>let set = new Set([1, 2]);<br>let processor = {<br>    output(value) {<br>        console.log(value);    //1<br>                                    2<br>    },<br>    process(dataSet) {<br>        dataSet.forEach(function (value) {<br>            this.output(value);<br>        },this);<br>    }<br>};<br>processor.process(set);</p>
-<p>let set = new Set([1, 2]);<br>let processor = {<br>    output(value) {<br>        console.log(value);       //1<br>                                    2<br>    },<br>    process(dataSet) {<br>        dataSet.forEach(value =&gt; this.output(value));<br>    }<br>};<br>processor.process(set);<br>将set集合转换为数组<br>let set = new Set([1,2,4,4,4,4,5,6,8]);<br>array = […set];<br>console.log(array);//[1, 2, 4, 5, 6, 8]<br>我们可以利用set集合过滤数组中重复的值<br>function eliminateDuplicates(items) {<br>    return […new Set(items)];<br>}<br>let numbers = [1,1,2,2,3,4,5,6],<br>noDuplicates = eliminateDuplicates(numbers);<br>console.log(noDuplicates);<br>set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。</p>
-<p>如果要想map合集中添加新的元素，可以调用set()方法传入键名和对应值作为两个参数。，从集合中获取信息则用get()方法。<br>let map = new Map();<br>map.set(“title”, “Understanding ECMAScript 6”);<br>map.set(“year”, 2016);<br>console.log(map.get(“title”));  //Understanding ECMAScript 6<br>console.log(map.get(“year”));   //2016<br>map集合支持的方法：<br>has(key):检测指定键名在map集合中是否已经存在<br>delete(key):从map集合中移除指定键名及其对应的值。<br>clear():移除map集合中的所有键值对。</p>
-<p>map集合的初始化方法<br>let map = new Map([[“name”,”heather”],[“age”, 25]]);<br>map集合的forEach()方法<br>map集合的forEach()方法和set集合和数组中的forEach()方法类似，回调函数都接受三个参数：<br>map集合中下一次索引的位置<br>值相对应的键名<br>map集合本身<br>let map = new Map([[“name”, “heather”],[“age”,18]]);<br>map.forEach(function (value, key, ownerMap) {<br>    console.log(key + “ “ + value);<br>    console.log(ownerMap === map);<br>});<br>这段代码输出：name heather<br>            true<br>            age 18<br>            true<br>当只用对象作为集合的键名时，Weak Map集合时最好的选择，当数据不可访问后集合中存储的相关引用和数据都会被自动回收，可有效避免内存泄漏的问题，从而优化内存的使用。 </p>
+        <h1 id="set集合与map集合"><a href="#set集合与map集合" class="headerlink" title="set集合与map集合"></a>set集合与map集合</h1><p>长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。</p>
+<h2 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h2><p>es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">9</span>))    <span class="comment">//false</span></span><br><span class="line"> <span class="comment">//has方法可以检测set集合中是否存在某个值</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">set.delete(<span class="number">5</span>);       <span class="comment">//删除某个元素</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line">set.clear();         <span class="comment">//删除所有元素</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="string">"5"</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(set.size);    <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+<h2 id="forEach用于在set集合上添加元素并在每个元素上执行操作"><a href="#forEach用于在set集合上添加元素并在每个元素上执行操作" class="headerlink" title="forEach用于在set集合上添加元素并在每个元素上执行操作"></a>forEach用于在set集合上添加元素并在每个元素上执行操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">let</span> processor = &#123;</span><br><span class="line">    output(value) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value);    <span class="comment">//1</span></span><br><span class="line">                               <span class="comment">// 2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    process(dataSet) &#123;</span><br><span class="line">        dataSet.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.output(value);</span><br><span class="line">        &#125;,<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">processor.process(set);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">let</span> processor = &#123;</span><br><span class="line">    output(value) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value);       <span class="comment">//1</span></span><br><span class="line">                                  <span class="comment">//2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    process(dataSet) &#123;</span><br><span class="line">        dataSet.forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="keyword">this</span>.output(value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">processor.process(set);</span><br></pre></td></tr></table></figure>
+<h2 id="将set集合转换为数组"><a href="#将set集合转换为数组" class="headerlink" title="将set集合转换为数组"></a>将set集合转换为数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>]);</span><br><span class="line">array = [...set];</span><br><span class="line"><span class="built_in">console</span>.log(array);<span class="comment">//[1, 2, 4, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<p>我们可以利用set集合过滤数组中重复的值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eliminateDuplicates</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [...new <span class="built_in">Set</span>(items)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">noDuplicates = eliminateDuplicates(numbers);</span><br><span class="line"><span class="built_in">console</span>.log(noDuplicates);</span><br></pre></td></tr></table></figure></p>
+<h3 id="set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。"><a href="#set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。" class="headerlink" title="set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。"></a>set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。</h3><h2 id="map集合"><a href="#map集合" class="headerlink" title="map集合"></a>map集合</h2><p>如果要想map合集中添加新的元素，可以调用set()方法传入键名和对应值作为两个参数。，从集合中获取信息则用get()方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map.set(<span class="string">"title"</span>, <span class="string">"Understanding ECMAScript 6"</span>);</span><br><span class="line">map.set(<span class="string">"year"</span>, <span class="number">2016</span>);</span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="string">"title"</span>));  <span class="comment">//Understanding ECMAScript 6</span></span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="string">"year"</span>));   <span class="comment">//2016</span></span><br></pre></td></tr></table></figure></p>
+<p>map集合支持的方法：<br><code>has(key)</code>:检测指定键名在map集合中是否已经存在<br><code>delete(key)</code>:从map集合中移除指定键名及其对应的值。<br><code>clear()</code>:移除map集合中的所有键值对。</p>
+<h3 id="map集合的初始化方法"><a href="#map集合的初始化方法" class="headerlink" title="map集合的初始化方法:"></a>map集合的初始化方法:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"name"</span>,<span class="string">"heather"</span>],[<span class="string">"age"</span>, <span class="number">25</span>]]);</span><br></pre></td></tr></table></figure>
+<h3 id="map集合的forEach-方法"><a href="#map集合的forEach-方法" class="headerlink" title="map集合的forEach()方法"></a>map集合的forEach()方法</h3><p>map集合的forEach()方法和set集合和数组中的forEach()方法类似，回调函数都接受三个参数：</p>
+<ol>
+<li>map集合中下一次索引的位置</li>
+<li>值相对应的键名</li>
+<li>map集合本身<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">"name"</span>, <span class="string">"heather"</span>],[<span class="string">"age"</span>,<span class="number">18</span>]]);</span><br><span class="line">map.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value, key, ownerMap</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key + <span class="string">" "</span> + value);</span><br><span class="line">    <span class="built_in">console</span>.log(ownerMap === map);</span><br><span class="line">&#125;);</span><br><span class="line">这段代码输出：name heather</span><br><span class="line">            <span class="literal">true</span></span><br><span class="line">            age <span class="number">18</span></span><br><span class="line">            <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当只用对象作为集合的键名时，Weak Map集合时最好的选择，当数据不可访问后集合中存储的相关引用和数据都会被自动回收，可有效避免内存泄漏的问题，从而优化内存的使用。 </p>
 
       
 
@@ -479,249 +781,9 @@
 
 
   
-    <article id="post-ES6（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/28/ES6（一）/">ES6（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/28/ES6（一）/" class="archive-article-date">
-  	<time datetime="2018-06-28T08:39:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="关于let与const声明"><a href="#关于let与const声明" class="headerlink" title="关于let与const声明"></a>关于let与const声明</h1>
-        
-          <a class="article-more-a" href="/2018/06/28/ES6（一）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/28/ES6（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript（八）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/16/JavaScript（八）/">JavaScript（八）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/16/JavaScript（八）/" class="archive-article-date">
-  	<time datetime="2018-06-16T10:13:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="总结一下事件分类的一些知识点"><a href="#总结一下事件分类的一些知识点" class="headerlink" title="总结一下事件分类的一些知识点"></a>总结一下事件分类的一些知识点</h2>
-        
-          <a class="article-more-a" href="/2018/06/16/JavaScript（八）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">事件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/16/JavaScript（八）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JavaScript（七）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/13/JavaScript（七）/">JavaScript（七）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/13/JavaScript（七）/" class="archive-article-date">
-  	<time datetime="2018-06-13T04:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1>
-        
-          <a class="article-more-a" href="/2018/06/13/JavaScript（七）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">事件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/13/JavaScript（七）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -837,6 +899,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
               </li>
              
               <li class="article-tag-list-item">
