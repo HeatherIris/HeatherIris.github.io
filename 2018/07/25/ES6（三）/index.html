@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title>ES6（三） | 青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="set集合与map集合长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。 set集合es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。123456let set = new">
+  <meta name="description" content="set集合与map集合">
 <meta name="keywords" content="JavaScript,ES6,set与map">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6（三）">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/07/25/ES6（三）/index.html">
 <meta property="og:site_name" content="青は一番暖かい色">
-<meta property="og:description" content="set集合与map集合长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。 set集合es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。123456let set = new">
+<meta property="og:description" content="set集合与map集合">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-26T07:12:11.066Z">
+<meta property="og:updated_time" content="2018-07-30T10:06:46.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6（三）">
-<meta name="twitter:description" content="set集合与map集合长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。 set集合es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。123456let set = new">
+<meta name="twitter:description" content="set集合与map集合">
   
     <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
@@ -175,7 +175,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="set集合与map集合"><a href="#set集合与map集合" class="headerlink" title="set集合与map集合"></a>set集合与map集合</h1><p>长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。</p>
+        <h1 id="set集合与map集合"><a href="#set集合与map集合" class="headerlink" title="set集合与map集合"></a>set集合与map集合</h1><a id="more"></a>
+<p>长久以来数组作为JavaScript中的唯一集合类型，使用的是数值类索引，常被用于创建栈和队列。如果开发者需要使用非数值索引，就会用非数组对象创建所需数据结构，这就是set与map的早期实现。</p>
 <h2 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h2><p>es6中新增的set类型是一种有序列表，其中含有一些相互独立的非重复值。通过set集合可以快速访问其中的数据，更有效的追踪各种离散值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">9</span>))    <span class="comment">//false</span></span><br><span class="line"> <span class="comment">//has方法可以检测set集合中是否存在某个值</span></span><br></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">set.delete(<span class="number">5</span>);       <span class="comment">//删除某个元素</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line">set.clear();         <span class="comment">//删除所有元素</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="string">"5"</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(set.size);    <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
