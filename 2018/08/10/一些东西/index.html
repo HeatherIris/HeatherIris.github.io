@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="只是想写一些东西来反思一下自己">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-11T14:43:23.255Z">
+<meta property="og:updated_time" content="2018-08-13T10:57:36.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些东西">
 <meta name="twitter:description" content="只是想写一些东西来反思一下自己">
@@ -174,8 +174,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>只是想写一些东西来反思一下自己<br><a id="more"></a><br>自己真的存在非常非常多的问题，面试真的太紧张了。<br>css居中<br>原型链、继承<br>数组去重<br>数组排序<br>还有跨域方面的问题<br>这些都是很简单很基础的一些问题<br>真的需要再写一写源码，好好研究研究<br>为什么能理解但是写就不会写了呢<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(line = readline()) &#123;</span><br><span class="line">    <span class="keyword">var</span> arr = line.splice(<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj[arr[i]]) &#123;</span><br><span class="line">            obj[arr[i]]++;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            obj[arr[i]] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> arr2 = <span class="built_in">Object</span>.keys(obj);</span><br><span class="line">    <span class="keyword">if</span> (arr2.length &gt; <span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(line = readline()) &#123;</span><br><span class="line">    <span class="keyword">var</span> patt = <span class="regexp">/(10)+/g</span>;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> arr = line.match(patt);</span><br><span class="line">    <span class="keyword">if</span> (arr != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> maxlen = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> maxlenstr = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">var</span> len = arr.length;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i].length &gt; maxlen) &#123;</span><br><span class="line">                maxlen = arr[i].length;</span><br><span class="line">                maxlenstr = arr[i]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        num = maxlen;</span><br><span class="line">        <span class="keyword">var</span> maxlenindex = line.indexOf(maxlenstr);</span><br><span class="line">        <span class="keyword">if</span> (line[maxlenindex<span class="number">-1</span>]==<span class="number">0</span>) &#123;</span><br><span class="line">            num++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(line[maxlenindex+maxlen] == <span class="number">1</span>) &#123;</span><br><span class="line">            num++</span><br><span class="line">        &#125;</span><br><span class="line">        print(num);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ((<span class="regexp">/(01)/g</span>).test(line)) &#123;</span><br><span class="line">        print(<span class="number">2</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        print(<span class="number">1</span>);   </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>gulp/webpack</p>
+        <p>只是想写一些东西来反思一下自己<br><a id="more"></a><br>自己真的存在非常非常多的问题，面试真的太紧张了。<br><strong>css居中</strong></p>
+<p><strong>原型链、继承</strong><br><strong>数组去重</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.unipue</span><br></pre></td></tr></table></figure></p>
+<p><strong>数组排序</strong><br><strong>还有跨域方面的问题</strong><br><strong>文档流</strong><br><strong>bfc</strong><br>这些都是很简单很基础的一些问题<br><strong>真的需要再写一写源码，好好研究研究</strong><br>为什么能理解但是写就不会写了呢<br><strong>gulp/webpack</strong><br>gulp与webpack这两款打包工具所做的事儿基本上是一样的，<br>webpack是自己写配置文件，webpack自己按照配置文件来执行前端构建流程。gulp是自己写流程。不过webpack整合了gulp的优点，现在webpack是趋势。gulp只是一个构建工具，webpack是模块依赖的解决方案。<br><strong>Vue双向数据绑定</strong></p>
 
       
 
@@ -247,6 +248,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/08/23/排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          排序算法
+        
+      </div>
+    </a>
   
   
     <a href="/2018/07/30/ES6（七）/" id="article-nav-older" class="article-nav-link-wrap">
@@ -389,18 +399,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -409,15 +407,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -426,6 +436,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">原型</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,11 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">原型</a>
+                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,11 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
