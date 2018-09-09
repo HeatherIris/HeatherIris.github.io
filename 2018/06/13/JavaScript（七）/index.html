@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="事件">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-28T08:35:45.999Z">
+<meta property="og:updated_time" content="2018-09-09T08:36:33.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（七）">
 <meta name="twitter:description" content="事件">
@@ -198,7 +198,7 @@
 <li>3.event.resultVelue = false; 兼容IE。</li>
 <li>封装阻止默认事件的函数cancelHander(event)。    </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">        event.prenentDefault();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cancelHandler</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event.preventDefault) &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        event.returnValue = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p> 系统调用事件处理函数的时候会给你传一个事件对象。这个事件对象上存了很多关于事件的一些信息和方法供你使用，这个事件对象用形参如(e)来表示。</p>
 <p> <code>event||window.event(用于IE)</code></p>
 <h2 id="事件源对象"><a href="#事件源对象" class="headerlink" title="事件源对象"></a>事件源对象</h2><p>真实点击到的对象叫事件源对象。在事件对象上有一个属性target，这个属性记载了事件源对象。事件通过事件源对象触发，在DOM上执行。事件源对象记载了事件对象上最重要的信息。</p>
@@ -452,11 +452,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,7 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
               </li>
              
               <li class="article-tag-list-item">
