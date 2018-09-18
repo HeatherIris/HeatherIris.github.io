@@ -8,17 +8,18 @@
   <link rel="dns-prefetch" href="https://github.com/HeatherIris">
   <title>html5 | 青は一番暖かい色</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="青は一番暖かい色">
+  <meta name="description" content="想写一些关于html5的知识点">
+<meta name="keywords" content="html5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html5">
 <meta property="og:url" content="https://github.com/HeatherIris/2018/09/07/html5/index.html">
 <meta property="og:site_name" content="青は一番暖かい色">
-<meta property="og:description" content="青は一番暖かい色">
+<meta property="og:description" content="想写一些关于html5的知识点">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-07T01:26:55.079Z">
+<meta property="og:updated_time" content="2018-09-10T10:24:20.382Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html5">
-<meta name="twitter:description" content="青は一番暖かい色">
+<meta name="twitter:description" content="想写一些关于html5的知识点">
   
     <link rel="alternative" href="/atom.xml" title="青は一番暖かい色" type="application/atom+xml">
   
@@ -174,7 +175,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>想写一些关于html5的知识点<br><a id="more"></a></p>
+<h1 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>WebSocket是HTML5开始提供的一种在单个 TCP 连接上进行全双工通讯的协议。</p>
+<p>在WebSocket API中，浏览器和服务器只需要做一个握手的动作，然后，浏览器和服务器之间就形成了一条快速通道。两者之间就直接可以数据互相传送。</p>
+<p>浏览器通过 JavaScript 向服务器发出建立 WebSocket 连接的请求，连接建立以后，客户端和服务器端就可以通过 TCP 连接直接交换数据。</p>
+<p>当你获取 Web Socket 连接后，你可以通过 send() 方法来向服务器发送数据，并通过 onmessage 事件来接收服务器返回的数据。</p>
+<p>WebSocket 协议本质上是一个基于 TCP 的协议。</p>
+<p>为了建立一个 WebSocket 连接，客户端浏览器首先要向服务器发起一个 HTTP 请求，这个请求和通常的 HTTP 请求不同，包含了一些附加头信息，其中附加头信息”Upgrade: WebSocket”表明这是一个申请协议升级的 HTTP 请求，服务器端解析这些附加的头信息然后产生应答信息返回给客户端，客户端和服务器端的 WebSocket 连接就建立起来了，双方就可以通过这个连接通道自由的传递信息，并且这个连接会持续存在直到客户端或者服务器端的某一方主动的关闭连接。</p>
+<p>以下 API 用于创建 WebSocket 对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(url, [protocol]);</span><br><span class="line"><span class="comment">//第一个参数 url, 指定连接的 URL。第二个参数 protocol 是可选的，指定了可接受的子协议。</span></span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -182,6 +191,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -275,7 +295,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WebSocket"><span class="toc-number">1.</span> <span class="toc-text">WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -387,14 +407,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -403,11 +415,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -415,11 +431,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,6 +456,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,6 +488,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">

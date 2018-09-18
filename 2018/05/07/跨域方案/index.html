@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="由于满足同源的脚本才可以获取资源，这样会限制资源之间的相互利用，比如ajax">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-22T03:43:24.531Z">
+<meta property="og:updated_time" content="2018-09-18T01:00:16.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域方案">
 <meta name="twitter:description" content="由于满足同源的脚本才可以获取资源，这样会限制资源之间的相互利用，比如ajax">
@@ -181,8 +181,11 @@
 <li>iframe + document.domain<br>这个方法主要针对主域名相同的子域名之间，具体做法：可以在<a href="http://www.a.com/a.html和http://script.a.com/b.html两个文件中分别加上document.domain=&quot;a.com&quot;,然后通过a.html.创建一个iframe，然后去控制iframe的contentDocument,实现两个文件之间的交互。" target="_blank" rel="noopener">http://www.a.com/a.html和http://script.a.com/b.html两个文件中分别加上document.domain=&quot;a.com&quot;,然后通过a.html.创建一个iframe，然后去控制iframe的contentDocument,实现两个文件之间的交互。</a><br>缺点：安全性低，操作繁琐</li>
 <li>iframe + location.hash<br>利用hash来进行传值，利用hash值来进行数据传递。改变hash值会会导致页面刷新。</li>
 <li>iframe + window.name<br>主页面有一个iframe,通过修改页面window.name来获取这个值。</li>
-<li>服务器代理中转</li>
-<li>jsonp<br>jsonp</li>
+<li><p>服务器代理中转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送消息端</span></span><br><span class="line"><span class="built_in">window</span>.parent.postMassage(<span class="string">'message'</span>, <span class="string">'http://baidu.com'</span>);</span><br><span class="line"><span class="comment">//接收消息端</span></span><br><span class="line"><span class="keyword">var</span> mc = <span class="keyword">new</span> massageChannel();</span><br><span class="line">mc.addEventLister(<span class="string">'message'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> origin = event.origin || event.originEvent.origin;</span><br><span class="line">    <span class="keyword">if</span>(origin == <span class="string">'http://baidu.com'</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"验证通过"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jsonp<br>jsonp</p>
+</li>
 </ol>
 <hr>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>web页面上script引入js文件不受跨域的影响，凡是有src属性的标签都不受同源策略的影响。<br>我们把资源放到script标签src里面，这样就把数据放到服务器上（使用jsonp的格式）。服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。</p>
@@ -425,14 +428,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -441,11 +436,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,11 +452,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,6 +477,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,6 +509,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">

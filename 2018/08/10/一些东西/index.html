@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="只是想写一些东西来反思一下自己">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-13T10:57:36.398Z">
+<meta property="og:updated_time" content="2018-09-17T08:14:29.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些东西">
 <meta name="twitter:description" content="只是想写一些东西来反思一下自己">
@@ -167,16 +167,16 @@
 
         
         <a href="/2018/08/10/一些东西/" class="archive-article-date">
-  	<time datetime="2018-08-10T04:24:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-10</time>
+  	<time datetime="2018-08-10T04:24:54.258Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>只是想写一些东西来反思一下自己<br><a id="more"></a><br>自己真的存在非常非常多的问题，面试真的太紧张了。<br><strong>css居中</strong></p>
-<p><strong>原型链、继承</strong><br><strong>数组去重</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.unipue</span><br></pre></td></tr></table></figure></p>
-<p><strong>数组排序</strong><br><strong>还有跨域方面的问题</strong><br><strong>文档流</strong><br><strong>bfc</strong><br>这些都是很简单很基础的一些问题<br><strong>真的需要再写一写源码，好好研究研究</strong><br>为什么能理解但是写就不会写了呢<br><strong>gulp/webpack</strong><br>gulp与webpack这两款打包工具所做的事儿基本上是一样的，<br>webpack是自己写配置文件，webpack自己按照配置文件来执行前端构建流程。gulp是自己写流程。不过webpack整合了gulp的优点，现在webpack是趋势。gulp只是一个构建工具，webpack是模块依赖的解决方案。<br><strong>Vue双向数据绑定</strong></p>
+        <p>只是想写一些东西来反思一下自己<br><a id="more"></a><br>自己真的存在非常非常多的问题，面试真的太紧张了。<br><strong>数组打乱</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line">arr.sort(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Math</span>.random - <span class="number">0.5</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这种方式不能够严格实现打乱,每个元素在每个位置出现的位置不一样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffer</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="keyword">while</span> (len) &#123;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*len--);</span><br><span class="line">        [arr[len], arr[i]] = [arr[i], arr[len]];</span><br><span class="line">        <span class="comment">// 将数组最后一位数与一位随机数替换</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这些都是很简单很基础的一些问题<br><strong>真的需要再写一写源码，好好研究研究</strong><br>为什么能理解但是写就不会写了呢<br><strong>gulp/webpack</strong><br>gulp与webpack这两款打包工具所做的事儿基本上是一样的，<br>webpack是自己写配置文件，webpack自己按照配置文件来执行前端构建流程。gulp是自己写流程。不过webpack整合了gulp的优点，现在webpack是趋势。gulp只是一个构建工具，webpack是模块依赖的解决方案。<br><strong>Vue双向数据绑定</strong></p>
 
       
 
@@ -399,14 +399,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -415,11 +407,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -427,11 +423,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,6 +448,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,6 +480,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">

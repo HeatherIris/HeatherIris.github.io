@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="总结一下事件分类的一些知识点">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-28T08:26:53.990Z">
+<meta property="og:updated_time" content="2018-09-10T10:24:20.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript（八）">
 <meta name="twitter:description" content="总结一下事件分类的一些知识点">
@@ -185,7 +185,7 @@
 <p>我们可以检测鼠标按下和抬起的时间间隔，如果时间间隔小于200毫秒则为click</p>
 <h2 id="拖拽的一个小demo"><a href="#拖拽的一个小demo" class="headerlink" title="拖拽的一个小demo"></a>拖拽的一个小demo</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">list-style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>; <span class="comment">/* 必须写 */</span></span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span> (<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> disX,</span><br><span class="line">        disY;</span><br><span class="line">    addEvent(elem, <span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        disX = event.clientX - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'left'</span>));</span><br><span class="line">        disY = event.clientY - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'top'</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(disX+ <span class="string">"  "</span> + disY);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseMove</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        elem.style.left = event.clientX - disX + <span class="string">"px"</span>;</span><br><span class="line">        elem.style.top = event.clientY - disY + <span class="string">"px"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseUp</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, <span class="built_in">arguments</span>.callee); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">drag(div);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'div'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drag</span> (<span class="params">elem</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> disX,</span><br><span class="line">        disY;</span><br><span class="line">    addEvent(elem, <span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        disX = event.clientX - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'left'</span>));</span><br><span class="line">        disY = event.clientY - <span class="built_in">parseInt</span>(getStyle(elem, <span class="string">'top'</span>));</span><br><span class="line">        <span class="built_in">console</span>.log(disX+ <span class="string">"  "</span> + disY);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        addEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, mouseUp);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseMove</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        elem.style.left = event.clientX - disX + <span class="string">"px"</span>;</span><br><span class="line">        elem.style.top = event.clientY - disY + <span class="string">"px"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">mouseUp</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> event = e || <span class="built_in">window</span>.event;</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mousemove'</span>, mouseMove);</span><br><span class="line">        removeEvent(<span class="built_in">document</span>, <span class="string">'mouseup'</span>, <span class="built_in">arguments</span>.callee); </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">drag(div);</span><br></pre></td></tr></table></figure>
 <p>利用冒泡把事件绑定在document上，使得div可以一直受鼠标的控制，让方块可以跟上鼠标的位置。</p>
 <h2 id="关于固定位置的一个demo"><a href="#关于固定位置的一个demo" class="headerlink" title="关于固定位置的一个demo"></a>关于固定位置的一个demo</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span>*100</span><br></pre></td></tr></table></figure>
@@ -427,14 +427,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
@@ -443,11 +435,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,11 +451,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,6 +476,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +508,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
