@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="promise与异步编程">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-05T11:10:57.088Z">
+<meta property="og:updated_time" content="2018-09-18T08:12:11.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6（七）">
 <meta name="twitter:description" content="promise与异步编程">
@@ -181,7 +181,9 @@
 <p>readFile()不会立刻开始读取文件，函数会先返回一个表示异步读取操作的promise对象，这个对象的操作完全取决于promise的生命周期。</p>
 <h2 id="promise的生命周期"><a href="#promise的生命周期" class="headerlink" title="promise的生命周期"></a>promise的生命周期</h2><p>每个promise都会经历一个短暂的生命周期：先是处于进行中的状态，此时操作尚未完成，所以他也是未处理的；一旦异步操作执行结束，promise则变为已处理的状态。操作结束后，promise可能会进入到以下两个状态中的其中一个：<br><code>Fulfilled</code>: promise异步操作完成<br><code>Rejected</code>: 由于程序错误或一些其他原因，promise异步操作未能成功完成。<br>当promise状态改变时，通过<code>then()</code>方法来采取特定的行动。<br>所有promise都有<code>then()</code>方法。它接收两个参数：第一个是当promise的状态变为fulfilled时要调用的函数，与异步操作相关的附加数据都会传递给这个完成函数。第二个是当promise的状态变为rejeted时要调用的函数，所有与失败状态相关的附加数据都会传递给这个拒绝函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> promise = readFile(<span class="string">"example.txt"</span>);</span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">contents</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(contents);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err.message);</span><br><span class="line">&#125;);     <span class="comment">//监听完成和被拒</span></span><br></pre></td></tr></table></figure></p>
 <p>promise还有一个<code>catch()</code>方法，相当于只给其传入拒绝处理程序的<code>then()</code>方法。</p>
-<h2 id="创建未完成的promise"><a href="#创建未完成的promise" class="headerlink" title="创建未完成的promise "></a>创建未完成的promise </h2><p>用promise可以创建未完成的promise，构造函数只接受一个参数：包含初始化Promise代码的执行器函数，执行器接收两个参数，分别是resolve()函数（成功时调用）和reject()函数（失败时调用）。<br>例如在nodejs中用promise实现readFile()函数：</p>
+<h2 id="创建未完成的promise"><a href="#创建未完成的promise" class="headerlink" title="创建未完成的promise "></a>创建未完成的promise </h2><p>用promise可以创建未完成的promise，构造函数只接受一个参数：包含初始化Promise代码的执行器函数，执行器接收两个参数，分别是resolve()函数（成功时调用）和reject()函数（失败时调用）。<br>使用promise实现一个简单的功能：每隔一秒打印一次1, 每隔两秒打印一次2， 每隔三秒打印一次3</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">one</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>, <span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">two</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>, <span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">three</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>,<span class="keyword">new</span> <span class="built_in">Date</span>() );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// promise实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jishu</span> (<span class="params">timer, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">        setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            callback();</span><br><span class="line">            resolve();</span><br><span class="line">            </span><br><span class="line">        &#125; ,timer)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;resolve()&#125;);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jishu(<span class="number">3000</span>, three);</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jishu(<span class="number">2000</span>, two);</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> jishu(<span class="number">1000</span>, one);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">loop();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用回调函数实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loop</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        three();</span><br><span class="line">        setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            two();</span><br><span class="line">            setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                one()</span><br><span class="line">            &#125;,<span class="number">1000</span>)</span><br><span class="line">        &#125;, <span class="number">2000</span>)</span><br><span class="line">    &#125;,<span class="number">3000</span>)</span><br><span class="line">&#125;</span><br><span class="line">loop();</span><br></pre></td></tr></table></figure>
+<p>如果依次输出321的话将setInterval改为setTimeout</p>
 
       
 
@@ -423,14 +425,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -439,7 +433,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -447,7 +441,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -455,15 +461,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,23 +473,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">this</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,6 +494,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">

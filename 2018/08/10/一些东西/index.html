@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="只是想写一些东西来反思一下自己">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-17T08:14:29.711Z">
+<meta property="og:updated_time" content="2018-09-21T13:57:01.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些东西">
 <meta name="twitter:description" content="只是想写一些东西来反思一下自己">
@@ -176,7 +176,11 @@
       
         <p>只是想写一些东西来反思一下自己<br><a id="more"></a><br>自己真的存在非常非常多的问题，面试真的太紧张了。<br><strong>数组打乱</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line">arr.sort(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">Math</span>.random - <span class="number">0.5</span>);</span><br></pre></td></tr></table></figure></p>
 <p>这种方式不能够严格实现打乱,每个元素在每个位置出现的位置不一样<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shuffer</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.length;</span><br><span class="line">    <span class="keyword">while</span> (len) &#123;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*len--);</span><br><span class="line">        [arr[len], arr[i]] = [arr[i], arr[len]];</span><br><span class="line">        <span class="comment">// 将数组最后一位数与一位随机数替换</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这些都是很简单很基础的一些问题<br><strong>真的需要再写一写源码，好好研究研究</strong><br>为什么能理解但是写就不会写了呢<br><strong>gulp/webpack</strong><br>gulp与webpack这两款打包工具所做的事儿基本上是一样的，<br>webpack是自己写配置文件，webpack自己按照配置文件来执行前端构建流程。gulp是自己写流程。不过webpack整合了gulp的优点，现在webpack是趋势。gulp只是一个构建工具，webpack是模块依赖的解决方案。<br><strong>Vue双向数据绑定</strong></p>
+<p>用js实现队列<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">queue</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = [];</span><br><span class="line">    <span class="comment">//向队列中插入元素</span></span><br><span class="line">    <span class="keyword">this</span>.enqueue = <span class="function"><span class="keyword">function</span> (<span class="params">element</span>) </span>&#123;</span><br><span class="line">        arr.push(element);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从头部弹出元素</span></span><br><span class="line">    <span class="keyword">this</span>.dequeue = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr.shift();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查看队列最前面的元素</span></span><br><span class="line">    <span class="keyword">this</span>.front = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查看队列是否为空</span></span><br><span class="line">    <span class="keyword">this</span>.isEmpty = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr.length == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查看队列的长度</span></span><br><span class="line">    <span class="keyword">this</span>.issize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arr.length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查看队列</span></span><br><span class="line">    <span class="keyword">this</span>.print = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> items.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这些都是很简单很基础的一些问题<br><strong>真的需要再写一写源码，好好研究研究</strong><br>为什么能理解但是写就不会写了呢<br><strong>gulp/webpack</strong><br>gulp与webpack这两款打包工具所做的事儿基本上是一样的，<br>webpack是自己写配置文件，webpack自己按照配置文件来执行前端构建流程。gulp是自己写流程。不过webpack整合了gulp的优点，现在webpack是趋势。gulp只是一个执行任务的工具，通过tesk对整个开发过程进行构建。通过过程对项目的创建进行管理。<br>webpack是前端自动化构建工具，为模块化依赖提供了解决方案。<br><strong>webpack loader</strong><br>webpack loader是完成一种转换，loader用于对源代码进行转换，<br><strong>Vue双向数据绑定</strong><br><strong>http2</strong><br>多路复用允许通过单一的http2的连接发起多重的请求、相应消息，由于在http1时代中浏览器向同一域名下发送的http请求数量是受限的，数量超过限制时就会被阻塞，http2中的多路复用<br><strong>进程的三种状态</strong><br>就绪、执行、阻塞<br><strong>图片懒加载</strong><br>图片懒加载就是所谓的首屏加载，可用ajax实现图片懒加载<br><strong>js字符与ASCII码互转的方法</strong><br>将字母转ASCII码的方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'a'</span>;</span><br><span class="line">str.charCodeAt()<span class="comment">//65</span></span><br></pre></td></tr></table></figure></p>
+<p>ASCII码转字母的方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">97</span>;</span><br><span class="line"><span class="built_in">String</span>.fromCharCode(num);<span class="comment">//'a'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>toggle原生js写法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> show =<span class="built_in">document</span>.getElementById(<span class="string">'show'</span>);</span><br><span class="line"><span class="keyword">var</span> box =<span class="built_in">document</span>.getElementById(<span class="string">'box'</span>);</span><br><span class="line">show.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (hasClass(box, <span class="string">'show'</span>)) &#123;</span><br><span class="line">        removeClass(box, <span class="string">'show'</span>);</span><br><span class="line">        addClass(box, <span class="string">'hide'</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">        removeClass(box, <span class="string">'hide'</span>);</span><br><span class="line">        addClass(box, <span class="string">'show'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br><span class="line"> </span><br><span class="line">box.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="string">'s'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addClass</span> (<span class="params">el, className</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">9</span>)</span><br><span class="line">    <span class="keyword">if</span> (hasClass(el, className)) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> newClass = el.className.split(<span class="string">' '</span>);</span><br><span class="line">    newClass.push(className);</span><br><span class="line">    el.className = newClass.join(<span class="string">' '</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasClass</span> (<span class="params">el, className</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'has'</span>)</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="built_in">RegExp</span>(<span class="string">'(^|\\s)'</span> + className + <span class="string">'(\\s|$)'</span>);</span><br><span class="line">    <span class="keyword">return</span> reg.test(el.className);  <span class="comment">//test用于检测字符串是否符合某个模式</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeClass</span> (<span class="params">el, className</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">if</span> (!hasClass(el, className)) &#123;</span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> newClass = el.className.split(<span class="string">''</span>);</span><br><span class="line">    newClass.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">val, index, newClass</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(val === className) &#123;</span><br><span class="line">            newClass.splice(index,<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    el.className = newClass.join(<span class="string">' '</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>与服务器交互的方法</strong><br>get（查）、post（改）、put（增）、delete（删）<br><strong>http2新特性</strong><br><strong>form表单属性</strong><br>action ：指定数据要提交到哪里去<br>method ：指定网络请求方式<br>get请求的请求数据直接暴露在URL中，容易被窃取<br>post请求的数据隐藏在请求体里，安全性好<br>name ：表单的名称<br>target ：指定action的URL在哪里打开<br><strong>表示圆角</strong><br>border-radius = 5px;</p>
 
       
 
@@ -399,14 +403,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -415,7 +411,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
+                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -423,7 +419,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">set与map</a>
+                <a href="javascript:void(0)" class="js-tag color2">类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -431,15 +439,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">类</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">迭代器、生成器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -451,23 +451,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">this</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">事件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,6 +472,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">预编译</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向对象编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">遍历</a>
               </li>
              
               <li class="article-tag-list-item">
