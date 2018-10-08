@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="青は一番暖かい色">
 <meta property="og:description" content="set集合与map集合">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-30T10:06:46.220Z">
+<meta property="og:updated_time" content="2018-09-29T13:18:00.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6（三）">
 <meta name="twitter:description" content="set集合与map集合">
@@ -182,7 +182,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">set.add(<span class="number">5</span>);</span><br><span class="line">set.add(<span class="string">"5"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="number">5</span>));  <span class="comment">//true</span></span><br><span class="line">set.clear();         <span class="comment">//删除所有元素</span></span><br><span class="line"><span class="built_in">console</span>.log(set.has(<span class="string">"5"</span>));  <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(set.size);    <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
 <h2 id="forEach用于在set集合上添加元素并在每个元素上执行操作"><a href="#forEach用于在set集合上添加元素并在每个元素上执行操作" class="headerlink" title="forEach用于在set集合上添加元素并在每个元素上执行操作"></a>forEach用于在set集合上添加元素并在每个元素上执行操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">let</span> processor = &#123;</span><br><span class="line">    output(value) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value);    <span class="comment">//1</span></span><br><span class="line">                               <span class="comment">// 2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    process(dataSet) &#123;</span><br><span class="line">        dataSet.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.output(value);</span><br><span class="line">        &#125;,<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">processor.process(set);</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>]);</span><br><span class="line"><span class="keyword">let</span> processor = &#123;</span><br><span class="line">    output(value) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(value);       <span class="comment">//1</span></span><br><span class="line">                                  <span class="comment">//2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    process(dataSet) &#123;</span><br><span class="line">        dataSet.forEach(<span class="function"><span class="params">value</span> =&gt;</span> <span class="keyword">this</span>.output(value));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">processor.process(set);</span><br></pre></td></tr></table></figure>
-<h2 id="将set集合转换为数组"><a href="#将set集合转换为数组" class="headerlink" title="将set集合转换为数组"></a>将set集合转换为数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>]);</span><br><span class="line">array = [...set];</span><br><span class="line"><span class="built_in">console</span>.log(array);<span class="comment">//[1, 2, 4, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
+<h2 id="将set集合转换为数组"><a href="#将set集合转换为数组" class="headerlink" title="将set集合转换为数组"></a>将set集合转换为数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">8</span>]);</span><br><span class="line">array = [...set];<span class="comment">//...扩展运算符</span></span><br><span class="line"><span class="built_in">console</span>.log(array);<span class="comment">//[1, 2, 4, 5, 6, 8]</span></span><br></pre></td></tr></table></figure>
 <p>我们可以利用set集合过滤数组中重复的值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eliminateDuplicates</span>(<span class="params">items</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [...new <span class="built_in">Set</span>(items)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],</span><br><span class="line">noDuplicates = eliminateDuplicates(numbers);</span><br><span class="line"><span class="built_in">console</span>.log(noDuplicates);</span><br></pre></td></tr></table></figure></p>
 <h3 id="set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。"><a href="#set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。" class="headerlink" title="set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。"></a>set属性不适用与处理键值对这样的信息结构，es6中添加了map集合来解决类似的问题。</h3><h2 id="map集合"><a href="#map集合" class="headerlink" title="map集合"></a>map集合</h2><p>如果要想map合集中添加新的元素，可以调用set()方法传入键名和对应值作为两个参数。，从集合中获取信息则用get()方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">map.set(<span class="string">"title"</span>, <span class="string">"Understanding ECMAScript 6"</span>);</span><br><span class="line">map.set(<span class="string">"year"</span>, <span class="number">2016</span>);</span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="string">"title"</span>));  <span class="comment">//Understanding ECMAScript 6</span></span><br><span class="line"><span class="built_in">console</span>.log(map.get(<span class="string">"year"</span>));   <span class="comment">//2016</span></span><br></pre></td></tr></table></figure></p>
 <p>map集合支持的方法：<br><code>has(key)</code>:检测指定键名在map集合中是否已经存在<br><code>delete(key)</code>:从map集合中移除指定键名及其对应的值。<br><code>clear()</code>:移除map集合中的所有键值对。</p>
@@ -436,11 +436,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">promise</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -456,18 +468,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">ajax</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">promise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数组</a>
               </li>
              
@@ -476,35 +476,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">事件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原型</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">原型链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">this</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">事件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">-JavaScript - 操作符 - 克隆 - 数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,6 +497,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">遍历</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">this</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">圣杯模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">-JavaScript - 操作符 - 克隆 - 数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">作用域</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
